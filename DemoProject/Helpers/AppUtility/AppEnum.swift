@@ -101,3 +101,31 @@ enum TextFieldType {
         }
     }
 }
+
+enum VendorFormData {
+    case requiredFields
+    case name(TextFieldType)
+    case consignee(TextFieldType)
+    case consigneeContactDetail(TextFieldType)
+    case location
+    case dimensions
+    case parcelDetail(TextFieldType)
+    case weight(TextFieldType)
+    case instructions(TextFieldType)
+    case refrigerationRequried
+    case pickupTime(TextFieldType)
+    case pickupDate(TextFieldType)
+    case deliveryDate(TextFieldType)
+    case deliveryTime(TextFieldType)
+    case buttons
+    
+    static func getDataSource() -> [VendorFormData] {
+        let dataSource: [VendorFormData] = [.requiredFields,.name(.name),.consignee(.consignee),
+                                            .consigneeContactDetail(.consigneeContactDetail), location,
+                                            .parcelDetail(.parcelDetail),.dimensions,.weight(.weight),
+                                            .instructions(.instructions),.refrigerationRequried,
+                                            .pickupTime(.pickupTime),.pickupDate(.pickupDate),
+                                            .deliveryTime(.deliveryTime),.deliveryDate(.deliveryDate),.buttons]
+        return dataSource
+    }
+}

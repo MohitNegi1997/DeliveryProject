@@ -98,6 +98,13 @@ class CommonFunctions {
         }
     }
     
+    /// LogoutProcess
+    class func logoutUserProcess() {
+        AppUserDefaults.removeAllValues()
+        userType = nil
+        AppRouter.goToLogin()
+    }
+    
     class func verifyUrl (urlString: String?) -> Bool {
         if let urlString = urlString {
             if let url = NSURL(string: urlString) {
@@ -140,23 +147,18 @@ class CommonFunctions {
         selfVC.present(alertController, animated: true, completion: nil)
     }
     
-    
     static func convertToApiFormat(_ dict : [String : Any]) -> String {
         var data = Data()
         do {
-            data = try JSONSerialization.data(
-                withJSONObject: dict ,
-                options: JSONSerialization.WritingOptions(rawValue: 0))
+            data = try JSONSerialization.data(withJSONObject: dict ,options: JSONSerialization.WritingOptions(rawValue: 0))
         }
         catch{
             print_debug("Something went wrong when converting array")
         }
-        
         if let tempString = NSString(data: data, encoding: String.Encoding.utf8.rawValue) as String?{
             
             return tempString
         }else{
-            
             return ""
         }
     }

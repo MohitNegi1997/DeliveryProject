@@ -23,6 +23,10 @@ class SideMenuVC: BaseVC {
         self.initialSetup()
     }
     
+    deinit {
+        print_debug("SideMenu Deinit")
+    }
+    
     //MARK:- Private Methods
     private func initialSetup() {
         self.setupTblView()
@@ -106,6 +110,8 @@ extension SideMenuVC: UITableViewDelegate, UITableViewDataSource {
             let nextVC = self.vendorDataSource[indexPath.row].navigation
             if let nextScene = nextVC {
                 MenuC.sharedInstance.navigationC?.pushViewController(nextScene, animated: true)
+            } else if self.vendorDataSource[indexPath.row] == .logout {
+                CommonFunctions.logoutUserProcess()
             }
         case .deliveryBoy: return
         }

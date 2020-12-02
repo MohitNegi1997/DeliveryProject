@@ -110,18 +110,22 @@ class ViewController: BaseVC {
             self.pickerView = UIPickerView.init()
             self.pickerView?.delegate = self
             self.pickerView?.dataSource = self
-            self.pickerView?.backgroundColor = AppColors.whiteColor
-            self.pickerView?.setValue(UIColor.black, forKey: "textColor")
+            self.pickerView?.backgroundColor = AppColors.blackColor
+            self.pickerView?.setValue(AppColors.whiteColor, forKey: "textColor")
             self.pickerView?.autoresizingMask = .flexibleWidth
             self.pickerView?.contentMode = .center
             self.pickerView?.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height + 250, width: UIScreen.main.bounds.size.width, height: 250)
             self.view.addSubview(self.pickerView!)
+            //ToolBar
             self.toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height + 250, width: UIScreen.main.bounds.size.width, height: 40))
             self.toolBar?.isTranslucent = true
             let doneBtn = UIBarButtonItem(title: StringConstants.done.localized, style: .done, target: self, action: #selector(onDoneButtonTapped))
             let cancelBtn = UIBarButtonItem(title: StringConstants.cancel.localized, style: .plain, target: self, action: #selector(onCancelBtnTapped))
-            let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil);
+            doneBtn.tintColor = AppColors.whiteColor
+            cancelBtn.tintColor = AppColors.whiteColor
+            let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
             self.toolBar?.items = [cancelBtn, flexibleSpace, doneBtn]
+            self.toolBar?.barTintColor = AppColors.themeColor
             self.view.addSubview(toolBar!)
             self.showPickerViewWithAnimation()
         }

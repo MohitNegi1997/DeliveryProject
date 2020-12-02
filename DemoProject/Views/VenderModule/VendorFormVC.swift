@@ -11,7 +11,8 @@ import UIKit
 class VendorFormVC: BaseVC {
 
     //MARK:- Properties
-    private let vendorDataSource: [TextFieldType] = [.name,.consignee,.consigneeContactDetail,.parcelDetail,.instructions, .weight, .pickupTime, .pickupDate, .deliveryTime, .deliveryDate]
+    private let vendorDataSource: [VendorFormData] = VendorFormData.getDataSource()
+    public var isDataAvailable: Bool = true
     
     //MARK:- IBOutlets
     @IBOutlet weak var vendorFormTblView: UITableView!
@@ -20,6 +21,10 @@ class VendorFormVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initialSetup()
+    }
+    
+    deinit {
+        print_debug("VendorForm Deinit")
     }
     
     //MARK:- Private Methods
@@ -51,6 +56,10 @@ class VendorFormVC: BaseVC {
     
     private func registerCell() {
         self.vendorFormTblView.registerCell(with: CommonTFCell.self)
+        self.vendorFormTblView.registerCell(with: AddressCell.self)
+        self.vendorFormTblView.registerCell(with: DimensionsCell.self)
+        self.vendorFormTblView.registerCell(with: RefrigerationRequiredCell.self)
+        self.vendorFormTblView.registerCell(with: SubmitButtonCell.self)
     }
     
     private func setupNavigation() {
@@ -59,6 +68,30 @@ class VendorFormVC: BaseVC {
         self.addLeftNavigationItems(navigationItems: [.back])
         self.addActionFor(navigationItem: .back, selector: #selector(self.backBtnTapped))
         self.removeNavigationBarBottomLine()
+    }
+    
+    private func openDatePicker(time: Bool) {
+        let datePickerVC = DatePickerVC.instantiate(fromAppStoryboard: .vendor)
+        datePickerVC.onlyTime = time
+        datePickerVC.onTapDone = { [weak self] (date) in
+            guard let _ = self else { return }
+            let dateFormatter = DateFormatter()
+            if time {
+                dateFormatter.dateFormat = Date.DateFormat.hhmma.rawValue
+                print_debug(date.convertToString(dateformat: Date.DateFormat.hhmma.rawValue))
+            } else {
+                dateFormatter.dateFormat = Date.DateFormat.ddMMMyyyy.rawValue
+                print_debug(date)
+            }
+        }
+        datePickerVC.onTapCancel = { [weak self] in
+            guard let _ = self else { return }
+            print_debug("Tap on cancel button")
+        }
+        datePickerVC.modalPresentationStyle = .overCurrentContext
+        self.present(datePickerVC, animated: false, completion: nil)
+        
+
     }
     
     //MARK:- Public Methods
@@ -80,9 +113,49 @@ extension VendorFormVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueCell(with: CommonTFCell.self, indexPath: indexPath)
-        cell.configureCell(with: self.vendorDataSource[indexPath.row])
-        return cell
+        switch self.vendorDataSource[indexPath.row] {
+        case .requiredFields:
+            let cell = tableView.dequeueCell(with: CommonTFCell.self, indexPath: indexPath)
+            cell.configureCell(with: StringConstants.requiredFields.localized) 
+            return cell
+        case .location:
+            let cell = tableView.dequeueCell(with: AddressCell.self, indexPath: indexPath)
+            cell.configureCell(with: "Location")
+            return cell
+        case .dimensions:
+            let cell = tableView.dequeueCell(with: DimensionsCell.self, indexPath: indexPath)
+            cell.configureCell()
+            return cell
+        case .refrigerationRequried:
+            let cell = tableView.dequeueCell(with: RefrigerationRequiredCell.self, indexPath: indexPath)
+            cell.configureCell()
+            return cell
+        case .name(let txtField),
+             .consignee(let txtField),
+             .consigneeContactDetail(let txtField),
+             .parcelDetail(let txtField),
+             .instructions(let txtField),
+             .weight(let txtField),
+             .deliveryDate(let txtField),
+             .deliveryTime(let txtField),
+             .pickupDate(let txtField),
+             .pickupTime(let txtField):
+            let cell = tableView.dequeueCell(with: CommonTFCell.self, indexPath: indexPath)
+            cell.configureCell(with: txtField)
+            cell.onTapBtn = { [weak self] in
+                guard let self = self else { return }
+                switch self.vendorDataSource[indexPath.row] {
+                case .pickupTime, .deliveryTime: self.openDatePicker(time: true)
+                case .pickupDate, .deliveryDate: self.openDatePicker(time: false)
+                default: return
+                }
+            }
+            return cell
+        case .buttons:
+            let cell = tableView.dequeueCell(with: SubmitButtonCell.self, indexPath: indexPath)
+            cell.configureCell(isEditHidden: self.isDataAvailable)
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

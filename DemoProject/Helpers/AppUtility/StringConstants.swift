@@ -64,6 +64,33 @@ enum StringConstants: String {
     case deliveryTimePlaceholder = "Delivery Time:"
     case deliveryDatePlaceholder = "Delivery Date:"
     
+    case requiredFields = "Required Fields"
+    
+    //MARK:- DimensionsCell
+    case dimensions = "Dimensions"
+    case length = "Length"
+    case breadth = "Breadth"
+    case height = "Height"
+    case cm = "cm"
+    
+    //MARK:- RefrigerationRequiredCell
+    case refrigerationRequired = "Refrigeration Required"
+    case yes = "Yes"
+    case no = "No"
+    
+    //MARK:- SubmitButtonCell
+    case placeOrder = "Place Order"
+    case editOrder = "Edit Order"
+    case saveChanges = "Save Changes"
+    
+    //MARK:- AddressCell
+    case location = "Location"
+    case enterPickupAddress = "Enter Pickup Address"
+    case enterDeliveryAddress = "Enter Delivery Address"
+    
+    //MARK:- OrderStatusCell
+    case deliveryDistance = "Delivery Distance"
+
     //MARK:- Session Expired
     case session_Expired = "Session Expired"
 }

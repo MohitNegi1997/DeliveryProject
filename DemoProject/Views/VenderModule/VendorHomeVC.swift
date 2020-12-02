@@ -8,9 +8,20 @@
 
 import UIKit
 
-class VendorHomeVC: BaseVC {
+struct VendorData {
+    var name: String
+    var distance: String
+    var time: String
+    var status: String
+}
 
+class VendorHomeVC: BaseVC {
+    
+    private let orderDataSource: [VendorData] = [VendorData(name: "Mohit", distance: "142Km", time: "10:30 AM", status: "Not Completed"),
+    VendorData(name: "Aman", distance: "10Km", time: "4:45 PM", status: "Not Completed")]
+    
     //MARK:- IBOutlets
+    @IBOutlet weak var orderPlaceTblView: UITableView!
     
     //MARK:- Life Cycle
     override func viewDidLoad() {
@@ -28,6 +39,7 @@ class VendorHomeVC: BaseVC {
     
     //MARK:- Private Methods
     private func initialSetup() {
+        self.setupTblView()
         self.setupNavigation()
     }
     
@@ -39,10 +51,41 @@ class VendorHomeVC: BaseVC {
         self.removeNavigationBarBottomLine()
     }
     
+    private func setupTblView() {
+        self.registerCell()
+        self.orderPlaceTblView.delegate = self
+        self.orderPlaceTblView.dataSource = self
+    }
+    
+    private func registerCell() {
+        self.orderPlaceTblView.registerCell(with: OrderStatusCell.self)
+    }
+
+    
     //MARK:- Public Methods
     
     //MARK:- Selector
     @objc func openSideMenu() {
         MenuC.sharedInstance.toggleMenu(navC: self.navigationController)
+    }
+}
+
+//MARK:- UITableViewDelegate + DataSource
+extension VendorHomeVC: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.orderDataSource.endIndex
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueCell(with: OrderStatusCell.self, indexPath: indexPath)
+        cell.configureCell(with: self.orderDataSource[indexPath.row])
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vendorFormVC = VendorFormVC.instantiate(fromAppStoryboard: .vendor)
+        vendorFormVC.isDataAvailable = false
+        self.push(vendorFormVC)
     }
 }

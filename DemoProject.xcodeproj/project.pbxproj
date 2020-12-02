@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C10FB1A2577ED26001FDDD4 /* RefrigerationRequiredCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C10FB182577ED26001FDDD4 /* RefrigerationRequiredCell.swift */; };
+		0C10FB1B2577ED26001FDDD4 /* RefrigerationRequiredCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C10FB192577ED26001FDDD4 /* RefrigerationRequiredCell.xib */; };
+		0C10FB1E257806B0001FDDD4 /* SubmitButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C10FB1C257806B0001FDDD4 /* SubmitButtonCell.swift */; };
+		0C10FB1F257806B0001FDDD4 /* SubmitButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C10FB1D257806B0001FDDD4 /* SubmitButtonCell.xib */; };
+		0C10FB23257810FC001FDDD4 /* OrderStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C10FB21257810FC001FDDD4 /* OrderStatusCell.swift */; };
+		0C10FB24257810FC001FDDD4 /* OrderStatusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C10FB22257810FC001FDDD4 /* OrderStatusCell.xib */; };
+		0C2B70BC2577844000AC309F /* DatePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2B70BA2577844000AC309F /* DatePickerVC.swift */; };
+		0C2B70BF257792E500AC309F /* VenderFormModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2B70BE257792E500AC309F /* VenderFormModel.swift */; };
+		0C2B70C225779C2100AC309F /* AddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2B70C025779C2100AC309F /* AddressCell.swift */; };
+		0C2B70C325779C2100AC309F /* AddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C2B70C125779C2100AC309F /* AddressCell.xib */; };
+		0C2B70C52577A5D500AC309F /* UITextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2B70C42577A5D500AC309F /* UITextViewExtension.swift */; };
+		0C2B70CA2577AE1500AC309F /* DimensionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2B70C82577AE1500AC309F /* DimensionsCell.swift */; };
+		0C2B70CB2577AE1600AC309F /* DimensionsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C2B70C92577AE1500AC309F /* DimensionsCell.xib */; };
 		0C3F09912576764A0091E120 /* AppEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3F09902576764A0091E120 /* AppEnum.swift */; };
 		0C3F099325767BA70091E120 /* Vendor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C3F099225767BA70091E120 /* Vendor.storyboard */; };
 		0C3F099725767D7F0091E120 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3F099625767D7F0091E120 /* LoginController.swift */; };
@@ -74,6 +87,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C10FB182577ED26001FDDD4 /* RefrigerationRequiredCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefrigerationRequiredCell.swift; sourceTree = "<group>"; };
+		0C10FB192577ED26001FDDD4 /* RefrigerationRequiredCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RefrigerationRequiredCell.xib; sourceTree = "<group>"; };
+		0C10FB1C257806B0001FDDD4 /* SubmitButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitButtonCell.swift; sourceTree = "<group>"; };
+		0C10FB1D257806B0001FDDD4 /* SubmitButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubmitButtonCell.xib; sourceTree = "<group>"; };
+		0C10FB21257810FC001FDDD4 /* OrderStatusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderStatusCell.swift; sourceTree = "<group>"; };
+		0C10FB22257810FC001FDDD4 /* OrderStatusCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderStatusCell.xib; sourceTree = "<group>"; };
+		0C2B70BA2577844000AC309F /* DatePickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerVC.swift; sourceTree = "<group>"; };
+		0C2B70BE257792E500AC309F /* VenderFormModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenderFormModel.swift; sourceTree = "<group>"; };
+		0C2B70C025779C2100AC309F /* AddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCell.swift; sourceTree = "<group>"; };
+		0C2B70C125779C2100AC309F /* AddressCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressCell.xib; sourceTree = "<group>"; };
+		0C2B70C42577A5D500AC309F /* UITextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewExtension.swift; sourceTree = "<group>"; };
+		0C2B70C82577AE1500AC309F /* DimensionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimensionsCell.swift; sourceTree = "<group>"; };
+		0C2B70C92577AE1500AC309F /* DimensionsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DimensionsCell.xib; sourceTree = "<group>"; };
 		0C3F09902576764A0091E120 /* AppEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnum.swift; sourceTree = "<group>"; };
 		0C3F099225767BA70091E120 /* Vendor.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Vendor.storyboard; sourceTree = "<group>"; };
 		0C3F099625767D7F0091E120 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -156,6 +182,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C10FB20257810DC001FDDD4 /* VendorHomeCell */ = {
+			isa = PBXGroup;
+			children = (
+				0C10FB21257810FC001FDDD4 /* OrderStatusCell.swift */,
+				0C10FB22257810FC001FDDD4 /* OrderStatusCell.xib */,
+			);
+			path = VendorHomeCell;
+			sourceTree = "<group>";
+		};
+		0C2B70B62577836700AC309F /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ThirdParty;
+			sourceTree = "<group>";
+		};
 		0C3F099425767D540091E120 /* PreLogin */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +228,7 @@
 			children = (
 				0C490CD22576AA580015070F /* VendorHomeVC.swift */,
 				0C490CDF2576C3840015070F /* VendorFormVC.swift */,
+				0C2B70BA2577844000AC309F /* DatePickerVC.swift */,
 			);
 			path = VenderModule;
 			sourceTree = "<group>";
@@ -266,6 +309,7 @@
 		0CDF8B1A2573C85E00604DA3 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				0C2B70B62577836700AC309F /* ThirdParty */,
 				0CDF8B582573EB4800604DA3 /* Extension */,
 				0CDF8B262573D8D600604DA3 /* AppUtility */,
 			);
@@ -275,6 +319,7 @@
 		0CDF8B1E2573C95A00604DA3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0C2B70BE257792E500AC309F /* VenderFormModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -313,6 +358,7 @@
 		0CDF8B222573D51600604DA3 /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
+				0C10FB20257810DC001FDDD4 /* VendorHomeCell */,
 				0CFF520E2577516E00FDFA1C /* VenderFormCell */,
 				0C490CD62576B8D70015070F /* SideMenuCell */,
 			);
@@ -384,6 +430,7 @@
 				0CDF8B732573FB3700604DA3 /* DispatchQueueExtension.swift */,
 				0CDF8B7B2574148700604DA3 /* UITextFieldExtension.swift */,
 				0C490CD42576AEFB0015070F /* UIViewExtension.swift */,
+				0C2B70C42577A5D500AC309F /* UITextViewExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -393,6 +440,14 @@
 			children = (
 				0CFF520F2577521C00FDFA1C /* CommonTFCell.swift */,
 				0CFF52102577521C00FDFA1C /* CommonTFCell.xib */,
+				0C2B70C025779C2100AC309F /* AddressCell.swift */,
+				0C2B70C125779C2100AC309F /* AddressCell.xib */,
+				0C2B70C82577AE1500AC309F /* DimensionsCell.swift */,
+				0C2B70C92577AE1500AC309F /* DimensionsCell.xib */,
+				0C10FB182577ED26001FDDD4 /* RefrigerationRequiredCell.swift */,
+				0C10FB192577ED26001FDDD4 /* RefrigerationRequiredCell.xib */,
+				0C10FB1C257806B0001FDDD4 /* SubmitButtonCell.swift */,
+				0C10FB1D257806B0001FDDD4 /* SubmitButtonCell.xib */,
 			);
 			path = VenderFormCell;
 			sourceTree = "<group>";
@@ -478,20 +533,25 @@
 				0CDF8B482573E31600604DA3 /* SF-Pro-Text-Light.otf in Resources */,
 				0CDF8B4D2573E31600604DA3 /* SF-Pro-Text-Bold.otf in Resources */,
 				0CDF8B422573E31600604DA3 /* SF-Pro-Text-MediumItalic.otf in Resources */,
+				0C10FB24257810FC001FDDD4 /* OrderStatusCell.xib in Resources */,
 				0CDF8B102573C7B200604DA3 /* LaunchScreen.storyboard in Resources */,
 				0C3F099325767BA70091E120 /* Vendor.storyboard in Resources */,
 				0CDF8B442573E31600604DA3 /* SF-Pro-Text-LightItalic.otf in Resources */,
 				0CDF8B472573E31600604DA3 /* SF-Pro-Text-HeavyItalic.otf in Resources */,
 				0CDF8B4B2573E31600604DA3 /* SF-Pro-Text-Semibold.otf in Resources */,
+				0C10FB1F257806B0001FDDD4 /* SubmitButtonCell.xib in Resources */,
+				0C2B70CB2577AE1600AC309F /* DimensionsCell.xib in Resources */,
 				0C490CDA2576B8F20015070F /* SideMenuCell.xib in Resources */,
 				0CDF8B462573E31600604DA3 /* icomoon.ttf in Resources */,
 				0CDF8B0D2573C7B200604DA3 /* Assets.xcassets in Resources */,
 				0CDF8B412573E31600604DA3 /* SF-Pro-Text-Regular.otf in Resources */,
 				0C490CDE2576BE8B0015070F /* SideMenuHeaderView.xib in Resources */,
 				0C490CD02576A7BE0015070F /* SideMenu.storyboard in Resources */,
+				0C10FB1B2577ED26001FDDD4 /* RefrigerationRequiredCell.xib in Resources */,
 				0CDF8B492573E31600604DA3 /* SF-Pro-Text-Medium.otf in Resources */,
 				0CDF8B452573E31600604DA3 /* SFProText-Italic.otf in Resources */,
 				0CDF8B432573E31600604DA3 /* SF-Pro-Text-SemiboldItalic.otf in Resources */,
+				0C2B70C325779C2100AC309F /* AddressCell.xib in Resources */,
 				0CFF52122577521C00FDFA1C /* CommonTFCell.xib in Resources */,
 				0CDF8B4C2573E31600604DA3 /* SF-Pro-Text-BoldItalic.otf in Resources */,
 				0CDF8B0B2573C7B100604DA3 /* Main.storyboard in Resources */,
@@ -548,9 +608,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CFF52112577521C00FDFA1C /* CommonTFCell.swift in Sources */,
+				0C2B70C225779C2100AC309F /* AddressCell.swift in Sources */,
 				0CDF8B5C2573EC5D00604DA3 /* ArrayExtension.swift in Sources */,
 				0CDF8B6C2573F57200604DA3 /* WebServices+EndPoints.swift in Sources */,
+				0C10FB23257810FC001FDDD4 /* OrderStatusCell.swift in Sources */,
 				0CDF8B662573EF8000604DA3 /* DateExtension.swift in Sources */,
+				0C2B70C52577A5D500AC309F /* UITextViewExtension.swift in Sources */,
 				0CDF8B082573C7B100604DA3 /* ViewController.swift in Sources */,
 				0C490CE02576C3840015070F /* VendorFormVC.swift in Sources */,
 				0CDF8B762573FC8700604DA3 /* AppUserDefaults.swift in Sources */,
@@ -560,6 +623,8 @@
 				0C490CD92576B8F20015070F /* SideMenuCell.swift in Sources */,
 				0CDF8B782573FD3000604DA3 /* Reachability.swift in Sources */,
 				0C490CCC2576A4A00015070F /* SideMenuVC.swift in Sources */,
+				0C2B70BF257792E500AC309F /* VenderFormModel.swift in Sources */,
+				0C2B70CA2577AE1500AC309F /* DimensionsCell.swift in Sources */,
 				0CDF8B6A2573F28A00604DA3 /* DictionaryExtension.swift in Sources */,
 				0CDF8B702573F64400604DA3 /* AppNetworking.swift in Sources */,
 				0C3F099725767D7F0091E120 /* LoginController.swift in Sources */,
@@ -574,6 +639,7 @@
 				0CDF8B532573E89A00604DA3 /* Debouncer.swift in Sources */,
 				0C3F09912576764A0091E120 /* AppEnum.swift in Sources */,
 				0C490CCE2576A6710015070F /* MenuC.swift in Sources */,
+				0C2B70BC2577844000AC309F /* DatePickerVC.swift in Sources */,
 				0C490CDC2576BDB40015070F /* SideMenuHeaderView.swift in Sources */,
 				0CDF8B6E2573F5CF00604DA3 /* WebServices.swift in Sources */,
 				0CDF8B742573FB3700604DA3 /* DispatchQueueExtension.swift in Sources */,
@@ -586,9 +652,11 @@
 				0C490CD52576AEFB0015070F /* UIViewExtension.swift in Sources */,
 				0CDF8B642573EE1100604DA3 /* StringExtension.swift in Sources */,
 				0CDF8B7A2573FDAC00604DA3 /* DeviceDetail.swift in Sources */,
+				0C10FB1A2577ED26001FDDD4 /* RefrigerationRequiredCell.swift in Sources */,
 				0CDF8B5A2573EB6600604DA3 /* UIViewControllerExtension.swift in Sources */,
 				0CDF8B682573F1E200604DA3 /* TrueTimeManager.swift in Sources */,
 				0CDF8B322573E1B700604DA3 /* AppImage.swift in Sources */,
+				0C10FB1E257806B0001FDDD4 /* SubmitButtonCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -735,16 +803,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4K64P2PDAU;
 				INFOPLIST_FILE = "$(SRCROOT)/DemoProject/Resource/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.demoPorject.beta;
+				PRODUCT_BUNDLE_IDENTIFIER = com.toki.mn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -755,16 +825,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4K64P2PDAU;
 				INFOPLIST_FILE = "$(SRCROOT)/DemoProject/Resource/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.demoPorject.beta;
+				PRODUCT_BUNDLE_IDENTIFIER = com.toki.mn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
