@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Side MenuVC-->
+        <scene sceneID="rjI-4w-odj">
+            <objects>
+                <viewController storyboardIdentifier="SideMenuVC" id="t5V-VP-bNC" customClass="SideMenuVC" customModule="DemoProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2g3-xw-tMx">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gOK-zR-po7">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Dap-S7-LRG">
+                                <rect key="frame" x="0.0" y="44" width="269" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Dap-S7-LRG" firstAttribute="top" secondItem="hWf-eo-z1E" secondAttribute="top" id="2wC-HR-6Sw"/>
+                            <constraint firstItem="hWf-eo-z1E" firstAttribute="bottom" secondItem="Dap-S7-LRG" secondAttribute="bottom" id="5Hf-EB-ZRc"/>
+                            <constraint firstItem="Dap-S7-LRG" firstAttribute="leading" secondItem="hWf-eo-z1E" secondAttribute="leading" id="HBC-2B-Jbe"/>
+                            <constraint firstItem="hWf-eo-z1E" firstAttribute="bottom" secondItem="gOK-zR-po7" secondAttribute="bottom" id="NGt-73-hyQ"/>
+                            <constraint firstItem="gOK-zR-po7" firstAttribute="leading" secondItem="hWf-eo-z1E" secondAttribute="leading" id="QAr-b7-t3H"/>
+                            <constraint firstItem="gOK-zR-po7" firstAttribute="top" secondItem="2g3-xw-tMx" secondAttribute="top" id="aNS-jv-fAN"/>
+                            <constraint firstItem="hWf-eo-z1E" firstAttribute="trailing" secondItem="gOK-zR-po7" secondAttribute="trailing" id="nyV-Lj-rZ2"/>
+                            <constraint firstItem="Dap-S7-LRG" firstAttribute="width" secondItem="2g3-xw-tMx" secondAttribute="width" multiplier="0.65" id="rxs-f2-6Lb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hWf-eo-z1E"/>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundView" destination="gOK-zR-po7" id="ciH-9K-iHt"/>
+                        <outlet property="sideMenuTblView" destination="Dap-S7-LRG" id="QJn-We-Cf9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sjk-uc-Jk8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2094" y="-131"/>
+        </scene>
+    </scenes>
+</document>
