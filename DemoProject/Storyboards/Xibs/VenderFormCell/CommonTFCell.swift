@@ -9,6 +9,9 @@
 import UIKit
 
 class CommonTFCell: UITableViewCell {
+    
+    //MARK:- Properties
+    var onTapBtn: (()->Void)?
 
     //MARK:- IBOutlets
     @IBOutlet weak var lblTitle: UILabel!
@@ -50,13 +53,22 @@ class CommonTFCell: UITableViewCell {
     
     //MARK:- Public Methods
     public func configureCell(with textFieldType: TextFieldType) {
-        self.lblTitle.text = textFieldType.text + " *"
         self.commonTxtField.setPlaceholder(with: textFieldType.placeHolder, color: AppColors.whiteColor)
         switch  textFieldType {
         case .pickupDate,.pickupTime,.deliveryTime,.deliveryDate:
             self.commonBtn.isHidden = false
+            self.lblTitle.text = textFieldType.text + " *"
+        case .instructions,.weight:
+            self.commonBtn.isHidden = true
+            self.lblTitle.text = textFieldType.text
         default:
             self.commonBtn.isHidden = true
+            self.lblTitle.text = textFieldType.text + " *"
         }
+    }
+    
+    //MARK:- IBActions
+    @IBAction func commonBtnTapped(_ sender: UIButton) {
+        self.onTapBtn?()
     }
 }

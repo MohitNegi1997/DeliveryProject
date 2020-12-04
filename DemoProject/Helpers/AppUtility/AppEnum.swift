@@ -25,7 +25,7 @@ enum NavigationBarItemType {
 }
 
 //MARK:- User Role
-enum UserType: CaseIterable {
+enum UserType: String {
     case admin, vendor, deliveryBoy
     
     var text: String {
@@ -37,7 +37,7 @@ enum UserType: CaseIterable {
     }
 }
 
-enum VendorSideMenu: CaseIterable {
+enum VendorSideMenu {
     case home, vendorForm, logout
     
     var text: String {
@@ -55,6 +55,73 @@ enum VendorSideMenu: CaseIterable {
             let vc = VendorFormVC.instantiate(fromAppStoryboard: .vendor)
             return vc
         case .logout: return nil
+        }
+    }
+    
+    var icon: UIImage? {
+        switch self {
+        case .home: return AppImage.homeImg
+        case .vendorForm: return AppImage.vendorFormImg
+        case .logout: return AppImage.logoutImg
+        }
+    }
+}
+
+enum AdminSideMenu {
+    case home, graph, userCreation, setting, logout
+    
+    var text: String {
+        switch self {
+        case .home: return StringConstants.home.localized
+        case .graph: return StringConstants.graph.localized
+        case .userCreation: return StringConstants.userCreation.localized
+        case .setting: return StringConstants.setting.localized
+        case .logout: return StringConstants.logout.localized
+        }
+    }
+    
+    var navigation: UIViewController? {
+        switch self {
+        case .home: return nil
+        case .graph: return nil
+        case .userCreation: return nil
+        case .setting: return nil
+        case .logout: return nil
+        }
+    }
+    
+    var icon: UIImage? {
+        switch self {
+        case .home: return AppImage.homeImg
+        case .graph: return AppImage.graphImg
+        case .setting: return AppImage.settingImg
+        case .userCreation: return AppImage.userCreationImg
+        case .logout: return AppImage.logoutImg
+        }
+    }
+}
+
+enum DeliverySideMenu {
+    case home, logout
+    
+    var text: String {
+        switch self {
+        case .home: return StringConstants.home.localized
+        case .logout: return StringConstants.logout.localized
+        }
+    }
+    
+    var navigation: UIViewController? {
+        switch self {
+        case .home: return nil
+        case .logout: return nil
+        }
+    }
+    
+    var icon: UIImage? {
+        switch self {
+        case .home: return AppImage.homeImg
+        case .logout: return AppImage.logoutImg
         }
     }
 }
@@ -99,5 +166,33 @@ enum TextFieldType {
         case .deliveryTime: return StringConstants.deliveryTimePlaceholder.localized
         case .deliveryDate: return StringConstants.deliveryDatePlaceholder.localized
         }
+    }
+}
+
+enum VendorFormData {
+//    case requiredFields
+    case name(TextFieldType)
+    case consignee(TextFieldType)
+    case consigneeContactDetail(TextFieldType)
+    case location
+    case dimensions
+    case parcelDetail(TextFieldType)
+    case weight(TextFieldType)
+    case instructions(TextFieldType)
+    case refrigerationRequried
+    case pickupTime(TextFieldType)
+    case pickupDate(TextFieldType)
+    case deliveryDate(TextFieldType)
+    case deliveryTime(TextFieldType)
+    case buttons
+    
+    static func getDataSource() -> [VendorFormData] {
+        let dataSource: [VendorFormData] = [.name(.name),.consignee(.consignee),
+                                            .consigneeContactDetail(.consigneeContactDetail), location,
+                                            .parcelDetail(.parcelDetail),.dimensions,.weight(.weight),
+                                            .instructions(.instructions),.refrigerationRequried,
+                                            .pickupTime(.pickupTime),.pickupDate(.pickupDate),
+                                            .deliveryTime(.deliveryTime),.deliveryDate(.deliveryDate),.buttons]
+        return dataSource
     }
 }

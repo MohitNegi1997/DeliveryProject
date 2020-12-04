@@ -128,13 +128,13 @@ class BaseVC: UIViewController {
             return backButton
         case .sideMenu:
             self.sideMenuBtn = UIButton(type: .custom)
-            let kSize: CGFloat = 35.0
+            let kSize: CGFloat = 25.0
             let yPosition = (self.navbarHeight - kSize)/2.0
             let yOffset: CGFloat = CGFloat(osTenYOffSet)
             self.sideMenuBtn?.frame = CGRect(x: 0.0, y: yPosition + yOffset, width: kSize, height: kSize)
             self.sideMenuBtn?.setImage(itemType.icon, for: .normal)
             self.sideMenuBtn?.layer.masksToBounds = true
-            self.sideMenuBtn?.imageView?.contentMode = .scaleAspectFill
+            self.sideMenuBtn?.imageView?.contentMode = .scaleAspectFit
             return sideMenuBtn
         }
     }

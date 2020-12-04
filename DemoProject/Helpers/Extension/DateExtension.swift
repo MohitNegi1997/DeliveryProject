@@ -52,7 +52,7 @@ extension Date {
         let strDate = dateFormatter.string(from: self)
         return strDate
     }
-
+    
     var isToday: Bool {
         return Calendar.current.isDateInToday(self)
     }
@@ -108,7 +108,7 @@ extension Date {
     var second:Int{
         return (Calendar.current as NSCalendar).components(.second, from: self).second!
     }
-        
+    
     var unixTimestamp:Double {
         return self.timeIntervalSince1970
     }
@@ -187,271 +187,274 @@ extension Date {
         return second
     }
     
-     func offsetFrom(date : Date) -> Int {
-            let dayHourMinuteSecond: Set<Calendar.Component> = [.day, .hour, .minute, .second]
-            let difference = NSCalendar.current.dateComponents(dayHourMinuteSecond, from: date, to: self)
-            let seconds = (difference.second ?? 0) * 1000
-            let minutes = (difference.minute ?? 0) * 60000 + seconds
-            let hours = (difference.hour ?? 0) * 60 * 60000 + minutes
-            let minutesInADay = 24 * 60
-            let updatedData = 60 * 60000
-            let daysData = (difference.day ?? 0) * minutesInADay * updatedData
-            let days = (daysData + hours)
-            if let day = difference.day, day          > 0 { return days }
-            if let hour = difference.hour, hour       > 0 { return hours }
-            if let minute = difference.minute, minute > 0 { return minutes }
-            if let second = difference.second, second > 0 { return seconds }
-            return 0
-        }
+    func offsetFrom(date : Date) -> Int {
+        let dayHourMinuteSecond: Set<Calendar.Component> = [.day, .hour, .minute, .second]
+        let difference = NSCalendar.current.dateComponents(dayHourMinuteSecond, from: date, to: self)
+        let seconds = (difference.second ?? 0) * 1000
+        let minutes = (difference.minute ?? 0) * 60000 + seconds
+        let hours = (difference.hour ?? 0) * 60 * 60000 + minutes
+        let minutesInADay = 24 * 60
+        let updatedData = 60 * 60000
+        let daysData = (difference.day ?? 0) * minutesInADay * updatedData
+        let days = (daysData + hours)
+        if let day = difference.day, day          > 0 { return days }
+        if let hour = difference.hour, hour       > 0 { return hours }
+        if let minute = difference.minute, minute > 0 { return minutes }
+        if let second = difference.second, second > 0 { return seconds }
+        return 0
+    }
+    
+    ///Converts a given Date into String based on the date format and timezone provided
+    func toString(dateFormat:String,timeZone:TimeZone = TimeZone.current)->String{
         
-        ///Converts a given Date into String based on the date format and timezone provided
-        func toString(dateFormat:String,timeZone:TimeZone = TimeZone.current)->String{
-            
-            let frmtr = DateFormatter()
-            frmtr.locale = Locale(identifier: "en_US_POSIX")
-            frmtr.dateFormat = dateFormat
-            frmtr.timeZone = timeZone
-            return frmtr.string(from: self)
-        }
+        let frmtr = DateFormatter()
+        frmtr.locale = Locale(identifier: "en_US_POSIX")
+        frmtr.dateFormat = dateFormat
+        frmtr.timeZone = timeZone
+        return frmtr.string(from: self)
+    }
+    
+    func toDDMMMYYYY(timeZone:TimeZone = TimeZone.current) -> String {
+        let frmtr = DateFormatter()
+        frmtr.locale = Locale(identifier: "en_US_POSIX")
+        frmtr.timeZone = timeZone
+        return "\(self.day):\(self.month):\(self.year)"
+    }
+    
+    func toMMMYYYY(timeZone:TimeZone = TimeZone.current) -> String {
+        let frmtr = DateFormatter()
+        frmtr.locale = Locale(identifier: "en_US_POSIX")
+        frmtr.timeZone = timeZone
+        return "\(self.month):\(self.year)"
+    }
+    
+    func calculateAge() -> Int {
+        let currentDate = TrueTimeManager.shared.currentTime
+        let calendar : Calendar = Calendar.current
+        let unitFlags : NSCalendar.Unit = [NSCalendar.Unit.year , NSCalendar.Unit.month , NSCalendar.Unit.day]
+        let dateComponentNow : DateComponents = (calendar as NSCalendar).components(unitFlags, from: currentDate)
+        let dateComponentBirth : DateComponents = (calendar as NSCalendar).components(unitFlags, from: self)
         
-        func toDDMMMYYYY(timeZone:TimeZone = TimeZone.current) -> String {
-            let frmtr = DateFormatter()
-            frmtr.locale = Locale(identifier: "en_US_POSIX")
-            frmtr.timeZone = timeZone
-            return "\(self.day):\(self.month):\(self.year)"
+        if ( (dateComponentNow.month! < dateComponentBirth.month!) ||
+            ((dateComponentNow.month! == dateComponentBirth.month!) && (dateComponentNow.day! < dateComponentBirth.day!))
+            )
+        {
+            return dateComponentNow.year! - dateComponentBirth.year! - 1
         }
-        
-        func toMMMYYYY(timeZone:TimeZone = TimeZone.current) -> String {
-            let frmtr = DateFormatter()
-            frmtr.locale = Locale(identifier: "en_US_POSIX")
-            frmtr.timeZone = timeZone
-            return "\(self.month):\(self.year)"
+        else {
+            return dateComponentNow.year! - dateComponentBirth.year!
         }
-        
-        func calculateAge() -> Int {
-            let currentDate = TrueTimeManager.shared.currentTime
-            let calendar : Calendar = Calendar.current
-            let unitFlags : NSCalendar.Unit = [NSCalendar.Unit.year , NSCalendar.Unit.month , NSCalendar.Unit.day]
-            let dateComponentNow : DateComponents = (calendar as NSCalendar).components(unitFlags, from: currentDate)
-            let dateComponentBirth : DateComponents = (calendar as NSCalendar).components(unitFlags, from: self)
-            
-            if ( (dateComponentNow.month! < dateComponentBirth.month!) ||
-                ((dateComponentNow.month! == dateComponentBirth.month!) && (dateComponentNow.day! < dateComponentBirth.day!))
-                )
-            {
-                return dateComponentNow.year! - dateComponentBirth.year! - 1
-            }
-            else {
-                return dateComponentNow.year! - dateComponentBirth.year!
-            }
-        }
-        
-        static func zero() -> Date {
-            let dateComp = DateComponents(calendar: Calendar.current, timeZone: TimeZone.current, era: 0, year: 0, month: 0, day: 0, hour: 0, minute: 0, second: 0, nanosecond: 0, weekday: 0, weekdayOrdinal: 0, quarter: 0, weekOfMonth: 0, weekOfYear: 0, yearForWeekOfYear: 0)
-            return dateComp.date!
-        }
-        
-        func convertToString() -> String {
-            // First, get a Date from the String
-            let dateFormatter = DateFormatter()
+    }
+    
+    static func zero() -> Date {
+        let dateComp = DateComponents(calendar: Calendar.current, timeZone: TimeZone.current, era: 0, year: 0, month: 0, day: 0, hour: 0, minute: 0, second: 0, nanosecond: 0, weekday: 0, weekdayOrdinal: 0, quarter: 0, weekOfMonth: 0, weekOfYear: 0, yearForWeekOfYear: 0)
+        return dateComp.date!
+    }
+    
+    func convertToString(dateformat: String = "") -> String {
+        // First, get a Date from the String
+        let dateFormatter = DateFormatter()
+        if dateformat.isEmpty {
             dateFormatter.dateFormat = DateFormat.yyyyMMddTHHmmssz.rawValue
-            
-            // Now, get a new string from the Date in the proper format for the user's locale
-            dateFormatter.dateFormat = nil
             dateFormatter.dateStyle = .long // set as desired
             dateFormatter.timeStyle = .medium // set as desired
-            let local = dateFormatter.string(from: self)
-            return local
+        } else {
+            dateFormatter.dateFormat = dateformat
+        }
+        // Now, get a new string from the Date in the proper format for the user's locale
+//        dateFormatter.dateFormat = nil
+        let local = dateFormatter.string(from: self)
+        return local
+    }
+    
+    
+    var timeAgoSince : String {
+        
+        let calendar = Calendar.current
+        let now = TrueTimeManager.shared.currentTime
+        let unitFlags: NSCalendar.Unit = [.second, .minute, .hour, .day, .weekOfYear, .month, .year]
+        let components = (calendar as NSCalendar).components(unitFlags, from: self, to: now, options: [])
+        
+        let year = abs(components.year ?? 0)
+        let month = abs(components.month ?? 0)
+        let week = abs(components.weekOfYear ?? 0)
+        let day = abs(components.day ?? 0)
+        let hour = abs(components.hour ?? 0)
+        let minute = abs(components.minute ?? 0)
+        _ = abs(components.second ?? 0)
+        
+        if year >= 2 {
+            return "\(year)y"
         }
         
-        
-        var timeAgoSince : String {
-            
-            let calendar = Calendar.current
-            let now = TrueTimeManager.shared.currentTime
-            let unitFlags: NSCalendar.Unit = [.second, .minute, .hour, .day, .weekOfYear, .month, .year]
-            let components = (calendar as NSCalendar).components(unitFlags, from: self, to: now, options: [])
-            
-            let year = abs(components.year ?? 0)
-            let month = abs(components.month ?? 0)
-            let week = abs(components.weekOfYear ?? 0)
-            let day = abs(components.day ?? 0)
-            let hour = abs(components.hour ?? 0)
-            let minute = abs(components.minute ?? 0)
-            _ = abs(components.second ?? 0)
-            
-            if year >= 2 {
-                return "\(year)y"
-            }
-            
-            if year >= 1 {
-                return "1y"
-            }
-            
-            if month >= 2 {
-                return "\(month)m"
-            }
-            
-            if month >= 1 {
-                return "1m"
-            }
-            
-            if week >= 2 {
-                return "\(week)w"
-            }
-            
-            if week >= 1 {
-                return "1w"
-            }
-            
-            if day >= 2 {
-                return "\(day)d"
-            }
-            
-            if day >= 1 {
-                return "1d"
-            }
-            
-            if hour >= 2 {
-                return "\(hour)hrs"
-            }
-            
-            if hour >= 1 {
-                return "1h"
-            }
-            
-            if minute >= 2 {
-                return "\(minute)m"
-            }
-            
-            if minute >= 1 {
-                return "1m"
-            }
-            
-    //        if second >= 3 {
-    //            return "\(second) sec"
-    //        }
-    //
-            return "just now"
+        if year >= 1 {
+            return "1y"
         }
         
-        var fulltimeAgoSince : String {
-            
-            let calendar = Calendar.current
-            let now = TrueTimeManager.shared.currentTime
-            let unitFlags: NSCalendar.Unit = [.second, .minute, .hour, .day, .weekOfYear, .month, .year]
-            let components = (calendar as NSCalendar).components(unitFlags, from: self, to: now, options: [])
-            
-            if let year = components.year, year >= 2 {
-                return "\(year) years"
-            }
-            
-            if let year = components.year, year >= 1 {
-                return "1 year"
-            }
-            
-            if let month = components.month, month >= 2 {
-                return "\(month) months"
-            }
-            
-            if let month = components.month, month >= 1 {
-                return "1 month"
-            }
-            
-            if let week = components.weekOfYear, week >= 2 {
-                return "\(week) weeks"
-            }
-            
-            if let week = components.weekOfYear, week >= 1 {
-                return "1 week"
-            }
-            
-            if let day = components.day, day >= 2 {
-                return "\(day) days"
-            }
-            
-            if let day = components.day, day >= 1 {
-                return "1 day"
-            }
-            
-            if let hour = components.hour, hour >= 2 {
-                return "\(hour) hours"
-            }
-            
-            if let hour = components.hour, hour >= 1 {
-                return "1 hour"
-            }
-            
-            if let minute = components.minute, minute >= 2 {
-                return "\(minute) minutes"
-            }
-            
-            if let minute = components.minute, minute >= 1 {
-                return "1 minute"
-            }
-            
-            if let second = components.second, second >= 3 {
-                return "\(second) seconds"
-            }
-            
-            return "now"
+        if month >= 2 {
+            return "\(month)m"
         }
         
-        // =========== Message Time ===========
-        static func getTimeWith(milliseconds: String) -> String {
-            if let timestampInMs = Double(milliseconds) {
-                let msgDate = Date(timeIntervalSince1970: timestampInMs*0.001)
-                let formattedDate = Date.previousDayDifference(from: msgDate, format: "MMM dd")
-                let time = Date.toString(from: msgDate, usingFormat: "h:mm a")
-                let combinedTxt = formattedDate + " · " + time
-                return combinedTxt
-            }
-            return ""
+        if month >= 1 {
+            return "1m"
         }
         
-        static func previousDayDiff(from date : Date, format : String) -> String {
-            let calendar = NSCalendar.current
-            if calendar.isDateInYesterday(date) { return "yesterday" }
-            else if calendar.isDateInToday(date) { return "today" }
-            else { return Date.toString(from: date, usingFormat: format) }
+        if week >= 2 {
+            return "\(week)w"
         }
         
-        static func getTimeStringWith(milliseconds: String) -> String {
-            if let timestampInMs = Double(milliseconds) {
-                let msgDate = Date(timeIntervalSince1970: timestampInMs*0.001)
-                let formattedDate = Date.toString(from: msgDate, usingFormat: "M/d")
-                let time = Date.toString(from: msgDate, usingFormat: "h:mm a")
-                let combinedTxt = formattedDate + ", " + time
-                return combinedTxt
-            }
-            return ""
+        if week >= 1 {
+            return "1w"
         }
         
-        static func previousDayDifference(from date : Date, format : String) -> String {
-            let calendar = NSCalendar.current
-            if calendar.isDateInYesterday(date) { return "yesterday" }
-            else if calendar.isDateInToday(date) { return "today" }
-            else if Date.ifDateisInPreviousSevenDays(date: date) { return Date.toString(from: date, usingFormat: "EEEE") }
-            else { return Date.toString(from: date, usingFormat: format) }
+        if day >= 2 {
+            return "\(day)d"
         }
         
-        static func ifDateisInPreviousSevenDays(date : Date) -> Bool{
-            
-            let threshold = Date(timeIntervalSinceNow: -(7*24*60*60))
-            return date >= threshold
+        if day >= 1 {
+            return "1d"
         }
         
-        static func toString(from date: Date?, usingFormat format : String) -> String {
-            
-            let dateFormatter: DateFormatter = DateFormatter()
-            dateFormatter.locale = NSLocale.current
-            dateFormatter.dateFormat = format
-            dateFormatter.amSymbol = "AM"
-            dateFormatter.pmSymbol = "PM"
-            dateFormatter.timeZone = TimeZone.current
-            let currentDate = TrueTimeManager.shared.currentTime
-            let formattedDate : String = dateFormatter.string(from: date ?? currentDate)
-            return formattedDate
+        if hour >= 2 {
+            return "\(hour)hrs"
         }
         
+        if hour >= 1 {
+            return "1h"
+        }
+        
+        if minute >= 2 {
+            return "\(minute)m"
+        }
+        
+        if minute >= 1 {
+            return "1m"
+        }
+        
+        //        if second >= 3 {
+        //            return "\(second) sec"
+        //        }
+        //
+        return "just now"
+    }
+    
+    var fulltimeAgoSince : String {
+        
+        let calendar = Calendar.current
+        let now = TrueTimeManager.shared.currentTime
+        let unitFlags: NSCalendar.Unit = [.second, .minute, .hour, .day, .weekOfYear, .month, .year]
+        let components = (calendar as NSCalendar).components(unitFlags, from: self, to: now, options: [])
+        
+        if let year = components.year, year >= 2 {
+            return "\(year) years"
+        }
+        
+        if let year = components.year, year >= 1 {
+            return "1 year"
+        }
+        
+        if let month = components.month, month >= 2 {
+            return "\(month) months"
+        }
+        
+        if let month = components.month, month >= 1 {
+            return "1 month"
+        }
+        
+        if let week = components.weekOfYear, week >= 2 {
+            return "\(week) weeks"
+        }
+        
+        if let week = components.weekOfYear, week >= 1 {
+            return "1 week"
+        }
+        
+        if let day = components.day, day >= 2 {
+            return "\(day) days"
+        }
+        
+        if let day = components.day, day >= 1 {
+            return "1 day"
+        }
+        
+        if let hour = components.hour, hour >= 2 {
+            return "\(hour) hours"
+        }
+        
+        if let hour = components.hour, hour >= 1 {
+            return "1 hour"
+        }
+        
+        if let minute = components.minute, minute >= 2 {
+            return "\(minute) minutes"
+        }
+        
+        if let minute = components.minute, minute >= 1 {
+            return "1 minute"
+        }
+        
+        if let second = components.second, second >= 3 {
+            return "\(second) seconds"
+        }
+        
+        return "now"
+    }
+    
+    // =========== Message Time ===========
+    static func getTimeWith(milliseconds: String) -> String {
+        if let timestampInMs = Double(milliseconds) {
+            let msgDate = Date(timeIntervalSince1970: timestampInMs*0.001)
+            let formattedDate = Date.previousDayDifference(from: msgDate, format: "MMM dd")
+            let time = Date.toString(from: msgDate, usingFormat: "h:mm a")
+            let combinedTxt = formattedDate + " · " + time
+            return combinedTxt
+        }
+        return ""
+    }
+    
+    static func previousDayDiff(from date : Date, format : String) -> String {
+        let calendar = NSCalendar.current
+        if calendar.isDateInYesterday(date) { return "yesterday" }
+        else if calendar.isDateInToday(date) { return "today" }
+        else { return Date.toString(from: date, usingFormat: format) }
+    }
+    
+    static func getTimeStringWith(milliseconds: String) -> String {
+        if let timestampInMs = Double(milliseconds) {
+            let msgDate = Date(timeIntervalSince1970: timestampInMs*0.001)
+            let formattedDate = Date.toString(from: msgDate, usingFormat: "M/d")
+            let time = Date.toString(from: msgDate, usingFormat: "h:mm a")
+            let combinedTxt = formattedDate + ", " + time
+            return combinedTxt
+        }
+        return ""
+    }
+    
+    static func previousDayDifference(from date : Date, format : String) -> String {
+        let calendar = NSCalendar.current
+        if calendar.isDateInYesterday(date) { return "yesterday" }
+        else if calendar.isDateInToday(date) { return "today" }
+        else if Date.ifDateisInPreviousSevenDays(date: date) { return Date.toString(from: date, usingFormat: "EEEE") }
+        else { return Date.toString(from: date, usingFormat: format) }
+    }
+    
+    static func ifDateisInPreviousSevenDays(date : Date) -> Bool{
+        
+        let threshold = Date(timeIntervalSinceNow: -(7*24*60*60))
+        return date >= threshold
+    }
+    
+    static func toString(from date: Date?, usingFormat format : String) -> String {
+        
+        let dateFormatter: DateFormatter = DateFormatter()
+        dateFormatter.locale = NSLocale.current
+        dateFormatter.dateFormat = format
+        dateFormatter.amSymbol = "AM"
+        dateFormatter.pmSymbol = "PM"
+        dateFormatter.timeZone = TimeZone.current
+        let currentDate = TrueTimeManager.shared.currentTime
+        let formattedDate : String = dateFormatter.string(from: date ?? currentDate)
+        return formattedDate
+    }
+    
 }

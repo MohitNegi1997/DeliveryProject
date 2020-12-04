@@ -65,6 +65,4 @@ class MenuC: NSObject {
             self.navigationC = nil
         }
     }
-    
-
 }

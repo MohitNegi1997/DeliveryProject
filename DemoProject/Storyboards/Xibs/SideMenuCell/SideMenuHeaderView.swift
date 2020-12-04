@@ -24,7 +24,7 @@ class SideMenuHeaderView: UITableViewHeaderFooterView {
     private func setupView() {
         self.lblUsername.font = AppFonts.SF_Pro_Bold.withSize(18.0)
         self.lblUsername.textColor = AppColors.whiteColor
-        self.seperateView.backgroundColor = AppColors.blackColor
+        self.seperateView.backgroundColor = AppColors.whiteColor
         self.backgroundColor = AppColors.themeColor
     }
     

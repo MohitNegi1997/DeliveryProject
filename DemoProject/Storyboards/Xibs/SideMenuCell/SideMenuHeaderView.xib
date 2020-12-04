@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -32,7 +33,7 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="omX-JJ-UOC" firstAttribute="centerY" secondItem="uXn-vg-wNH" secondAttribute="centerY" id="BtR-2M-II2"/>
+                        <constraint firstItem="pJn-At-DD3" firstAttribute="top" secondItem="omX-JJ-UOC" secondAttribute="bottom" constant="25" id="97w-Fi-GMc"/>
                         <constraint firstAttribute="bottom" secondItem="pJn-At-DD3" secondAttribute="bottom" constant="1.5" id="CIc-Hf-n0A"/>
                         <constraint firstAttribute="trailing" secondItem="pJn-At-DD3" secondAttribute="trailing" id="Us2-Em-Ufg"/>
                         <constraint firstItem="pJn-At-DD3" firstAttribute="leading" secondItem="uXn-vg-wNH" secondAttribute="leading" id="aGg-Cy-QUr"/>

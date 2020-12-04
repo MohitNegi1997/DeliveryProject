@@ -15,8 +15,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     static let shared = UIApplication.shared.delegate as! AppDelegate
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        AppRouter.goToLogin()
+        self.goToFirstScreen()
         return true
+    }
+}
+
+extension AppDelegate {
+    
+    private func goToFirstScreen() {
+        if let userType = userType {
+            switch userType {
+            case .admin: AppRouter.goToAdminHomeVC()
+            case .vendor: AppRouter.goToVendorHomeVC()
+            case .deliveryBoy: AppRouter.goToLogin()
+            }
+        } else {
+            AppRouter.goToLogin()
+        }
     }
 }
 

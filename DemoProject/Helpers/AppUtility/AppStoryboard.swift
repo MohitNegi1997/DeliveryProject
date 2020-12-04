@@ -13,6 +13,7 @@ enum AppStoryboard : String {
     case preLogin = "Main"
     case sideMenu = "SideMenu"
     case vendor = "Vendor"
+    case admin = "Admin"
 }
 
 extension AppStoryboard {
