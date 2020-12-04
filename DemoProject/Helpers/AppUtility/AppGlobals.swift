@@ -71,4 +71,16 @@ var isUserLoggedin: Bool {
 }
 
 //Set App According to user type
-var userType: UserType? = nil
+var userType: UserType? {
+    get {
+        if let userDefaultValue = AppUserDefaults.value(forKey: .userType).string {
+            let type = UserType(rawValue: userDefaultValue)
+            return type
+        } else {
+            return nil
+        }
+    }
+    set {
+        AppUserDefaults.save(value: newValue?.rawValue ?? "", forKey: .userType)
+    }
+}

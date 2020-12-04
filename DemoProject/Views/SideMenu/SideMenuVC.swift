@@ -12,6 +12,8 @@ class SideMenuVC: BaseVC {
     
     //MARK:- Properties
     private let vendorDataSource: [VendorSideMenu] = [.home, .vendorForm, .logout]
+    private let adminDataSource: [AdminSideMenu] = [.home, .userCreation, .graph, .setting, .logout]
+    private let deliveryDataSource: [DeliverySideMenu] = [.home, .logout]
     
     //MARK:- IBOutlets
     @IBOutlet weak var sideMenuTblView: UITableView!
@@ -50,6 +52,15 @@ class SideMenuVC: BaseVC {
         self.backgroundView.addGestureRecognizer(tapGesture)
     }
     
+    private func navigateTo(vc: UIViewController?, isLogOutType: Bool ) {
+        if isLogOutType {
+            CommonFunctions.logoutUserProcess()
+        } else {
+            guard let nextScene = vc else { return }
+            MenuC.sharedInstance.navigationC?.pushViewController(nextScene, animated: true)
+        }
+    }
+    
     //MARK:- Selector
     @objc func closeSideMenu() {
         MenuC.sharedInstance.toggleMenu(navC: nil)
@@ -65,9 +76,9 @@ extension SideMenuVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch self.safeUserType {
-            case .admin: return 0
-            case .vendor: return self.vendorDataSource.endIndex
-            case .deliveryBoy: return 0
+        case .admin: return self.adminDataSource.endIndex
+        case .vendor: return self.vendorDataSource.endIndex
+        case .deliveryBoy: return self.deliveryDataSource.endIndex
         }
     }
     
@@ -80,9 +91,9 @@ extension SideMenuVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: SideMenuCell.self, indexPath: indexPath)
         switch self.safeUserType {
-        case .admin: cell.configureCell(with: "Admin")
-        case .vendor: cell.configureCell(with: self.vendorDataSource[indexPath.row].text)
-        case .deliveryBoy: cell.configureCell(with: "DeliveryBoy")
+        case .admin: cell.configureCell(with: self.adminDataSource[indexPath.row].text, icon: self.adminDataSource[indexPath.row].icon)
+        case .vendor: cell.configureCell(with: self.vendorDataSource[indexPath.row].text, icon: self.vendorDataSource[indexPath.row].icon)
+        case .deliveryBoy: cell.configureCell(with: self.deliveryDataSource[indexPath.row].text, icon: self.deliveryDataSource[indexPath.row].icon)
         }
         return cell
     }
@@ -105,15 +116,15 @@ extension SideMenuVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch safeUserType {
-        case .admin: return
+        case .admin:
+            let nextVC = self.adminDataSource[indexPath.row].navigation
+            self.navigateTo(vc: nextVC, isLogOutType: self.adminDataSource[indexPath.row] == .logout)
         case .vendor:
             let nextVC = self.vendorDataSource[indexPath.row].navigation
-            if let nextScene = nextVC {
-                MenuC.sharedInstance.navigationC?.pushViewController(nextScene, animated: true)
-            } else if self.vendorDataSource[indexPath.row] == .logout {
-                CommonFunctions.logoutUserProcess()
-            }
-        case .deliveryBoy: return
+            self.navigateTo(vc: nextVC, isLogOutType: self.vendorDataSource[indexPath.row] == .logout)
+        case .deliveryBoy:
+            let nextVC = self.deliveryDataSource[indexPath.row].navigation
+            self.navigateTo(vc: nextVC, isLogOutType: self.deliveryDataSource[indexPath.row] == .logout)
         }
         MenuC.sharedInstance.toggleMenu(navC: nil)
     }

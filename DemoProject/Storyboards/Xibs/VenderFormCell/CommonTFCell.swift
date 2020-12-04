@@ -53,26 +53,18 @@ class CommonTFCell: UITableViewCell {
     
     //MARK:- Public Methods
     public func configureCell(with textFieldType: TextFieldType) {
-        self.txtFiledView.isHidden = false
-        self.setupFonts()
         self.commonTxtField.setPlaceholder(with: textFieldType.placeHolder, color: AppColors.whiteColor)
         switch  textFieldType {
         case .pickupDate,.pickupTime,.deliveryTime,.deliveryDate:
             self.commonBtn.isHidden = false
             self.lblTitle.text = textFieldType.text + " *"
         case .instructions,.weight:
+            self.commonBtn.isHidden = true
             self.lblTitle.text = textFieldType.text
         default:
             self.commonBtn.isHidden = true
             self.lblTitle.text = textFieldType.text + " *"
         }
-    }
-    
-    public func configureCell(with text: String) {
-        self.lblTitle.font = AppFonts.SF_Pro_Medium.withSize(16.0)
-        self.txtFiledView.isHidden = true
-        self.lblTitle.text = "* " + text
-        
     }
     
     //MARK:- IBActions

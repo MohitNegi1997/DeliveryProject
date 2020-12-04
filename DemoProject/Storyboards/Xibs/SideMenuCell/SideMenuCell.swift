@@ -11,6 +11,7 @@ import UIKit
 class SideMenuCell: UITableViewCell {
 
     //MARK:- IBOutlets
+    @IBOutlet weak var sideMenuImgView: UIImageView!
     @IBOutlet weak var lblSideMenuTitle: UILabel!
     @IBOutlet weak var seperateView: UIView!
     
@@ -27,13 +28,14 @@ class SideMenuCell: UITableViewCell {
     //MARK:- Private Method
     private func setupCell() {
         self.contentView.backgroundColor = AppColors.themeColor
-        self.lblSideMenuTitle.font = AppFonts.SF_Pro_Medium.withSize(14.0)
+        self.lblSideMenuTitle.font = AppFonts.SF_Pro_Medium.withSize(15.0)
         self.lblSideMenuTitle.textColor = AppColors.whiteColor
-        self.seperateView.backgroundColor = AppColors.blackColor
+        self.seperateView.backgroundColor = AppColors.whiteColor
     }
     
     //MARK:- Public Method
-    public func configureCell(with text: String) {
+    public func configureCell(with text: String, icon: UIImage?) {
         self.lblSideMenuTitle.text = text
+        self.sideMenuImgView.image = icon
     }
 }

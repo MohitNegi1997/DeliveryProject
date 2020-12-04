@@ -10,6 +10,11 @@ import Foundation
 
 enum ApiKey {
     
+    //MARK:- UserType
+    static var admin: String { return "admin" }
+    static var vendor: String { return "vendor" }
+    static var deliveryBoy: String { return "deliveryBoy" }
+    
     static var id: String { return "id" }
     
     //Basic Keys

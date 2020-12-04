@@ -114,10 +114,6 @@ extension VendorFormVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch self.vendorDataSource[indexPath.row] {
-        case .requiredFields:
-            let cell = tableView.dequeueCell(with: CommonTFCell.self, indexPath: indexPath)
-            cell.configureCell(with: StringConstants.requiredFields.localized) 
-            return cell
         case .location:
             let cell = tableView.dequeueCell(with: AddressCell.self, indexPath: indexPath)
             cell.configureCell(with: "Location")

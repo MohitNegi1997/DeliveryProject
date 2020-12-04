@@ -30,6 +30,11 @@ enum StringConstants: String {
     case deliveryBoy = "Delivery Boy"
     case vendor = "Vendor"
     
+    ///Admin Side Menu
+    case graph = "Graph"
+    case setting = "Setting"
+    case userCreation = "User Creation"
+    
     ///Vender Side Menu
     case home = "Home"
     case vendorForm = "Vendor's Form"

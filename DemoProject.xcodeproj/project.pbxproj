@@ -33,6 +33,8 @@
 		0C490CDC2576BDB40015070F /* SideMenuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C490CDB2576BDB40015070F /* SideMenuHeaderView.swift */; };
 		0C490CDE2576BE8B0015070F /* SideMenuHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C490CDD2576BE8B0015070F /* SideMenuHeaderView.xib */; };
 		0C490CE02576C3840015070F /* VendorFormVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C490CDF2576C3840015070F /* VendorFormVC.swift */; };
+		0C71BD36257AAC9C00551731 /* Admin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C71BD35257AAC9C00551731 /* Admin.storyboard */; };
+		0C71BD39257AAD9E00551731 /* AdminHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C71BD38257AAD9E00551731 /* AdminHomeVC.swift */; };
 		0CDF8B042573C7B100604DA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDF8B032573C7B100604DA3 /* AppDelegate.swift */; };
 		0CDF8B082573C7B100604DA3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDF8B072573C7B100604DA3 /* ViewController.swift */; };
 		0CDF8B0B2573C7B100604DA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CDF8B092573C7B100604DA3 /* Main.storyboard */; };
@@ -113,6 +115,8 @@
 		0C490CDB2576BDB40015070F /* SideMenuHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuHeaderView.swift; sourceTree = "<group>"; };
 		0C490CDD2576BE8B0015070F /* SideMenuHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuHeaderView.xib; sourceTree = "<group>"; };
 		0C490CDF2576C3840015070F /* VendorFormVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorFormVC.swift; sourceTree = "<group>"; };
+		0C71BD35257AAC9C00551731 /* Admin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Admin.storyboard; sourceTree = "<group>"; };
+		0C71BD38257AAD9E00551731 /* AdminHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminHomeVC.swift; sourceTree = "<group>"; };
 		0CDF8B002573C7B100604DA3 /* DemoProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CDF8B032573C7B100604DA3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CDF8B072573C7B100604DA3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -244,6 +248,14 @@
 			path = SideMenuCell;
 			sourceTree = "<group>";
 		};
+		0C71BD37257AAD6E00551731 /* AdminModule */ = {
+			isa = PBXGroup;
+			children = (
+				0C71BD38257AAD9E00551731 /* AdminHomeVC.swift */,
+			);
+			path = AdminModule;
+			sourceTree = "<group>";
+		};
 		0CDF8AF72573C7B100604DA3 = {
 			isa = PBXGroup;
 			children = (
@@ -327,6 +339,7 @@
 		0CDF8B1F2573C96700604DA3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0C71BD37257AAD6E00551731 /* AdminModule */,
 				0C490CD12576A8B20015070F /* VenderModule */,
 				0C490CCA2576A4780015070F /* SideMenu */,
 				0C3F099425767D540091E120 /* PreLogin */,
@@ -351,6 +364,7 @@
 				0CDF8B0E2573C7B200604DA3 /* LaunchScreen.storyboard */,
 				0C3F099225767BA70091E120 /* Vendor.storyboard */,
 				0C490CCF2576A7BE0015070F /* SideMenu.storyboard */,
+				0C71BD35257AAC9C00551731 /* Admin.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -554,6 +568,7 @@
 				0C2B70C325779C2100AC309F /* AddressCell.xib in Resources */,
 				0CFF52122577521C00FDFA1C /* CommonTFCell.xib in Resources */,
 				0CDF8B4C2573E31600604DA3 /* SF-Pro-Text-BoldItalic.otf in Resources */,
+				0C71BD36257AAC9C00551731 /* Admin.storyboard in Resources */,
 				0CDF8B0B2573C7B100604DA3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -647,6 +662,7 @@
 				0CDF8B7E25741C2500604DA3 /* Validation.swift in Sources */,
 				0CDF8B2C2573DF9300604DA3 /* StringConstants.swift in Sources */,
 				0CDF8B2A2573D9C100604DA3 /* AppColors.swift in Sources */,
+				0C71BD39257AAD9E00551731 /* AdminHomeVC.swift in Sources */,
 				0CDF8B552573E90100604DA3 /* AppRouter.swift in Sources */,
 				0CDF8B252573D59A00604DA3 /* BaseVC.swift in Sources */,
 				0C490CD52576AEFB0015070F /* UIViewExtension.swift in Sources */,
@@ -803,7 +819,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4K64P2PDAU;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/DemoProject/Resource/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -811,7 +827,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.toki.mn;
+				PRODUCT_BUNDLE_IDENTIFIER = com.toki1.mn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -825,7 +841,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4K64P2PDAU;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/DemoProject/Resource/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -833,7 +849,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.toki.mn;
+				PRODUCT_BUNDLE_IDENTIFIER = com.toki1.mn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

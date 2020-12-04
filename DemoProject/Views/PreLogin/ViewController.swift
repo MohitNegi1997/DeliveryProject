@@ -14,6 +14,7 @@ class ViewController: BaseVC {
     private var isSecurePassword: Bool = true
     private var toolBar: UIToolbar? = nil
     private var pickerView: UIPickerView? = nil
+    private let userTypeDataSource: [UserType]  = [.admin, .vendor, .deliveryBoy]
     private let controller: LoginController = LoginController()
     
     //MARK:- IBOutlets
@@ -96,7 +97,7 @@ class ViewController: BaseVC {
         let button = UIButton()
         button.addTarget(self, action: #selector(self.passwordHideUnhideBtnTapped(_:)), for: .touchUpInside)
         let showIcon = AppImage.showPassword
-        let hideIcon = AppImage.showPassword
+        let hideIcon = AppImage.hidePasswordImg
         if isSecureText {
             button.setImage(hideIcon, for: .normal)
         } else {
@@ -114,10 +115,10 @@ class ViewController: BaseVC {
             self.pickerView?.setValue(AppColors.whiteColor, forKey: "textColor")
             self.pickerView?.autoresizingMask = .flexibleWidth
             self.pickerView?.contentMode = .center
-            self.pickerView?.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height + 250, width: UIScreen.main.bounds.size.width, height: 250)
+            self.pickerView?.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height + 300, width: UIScreen.main.bounds.size.width, height: 300)
             self.view.addSubview(self.pickerView!)
             //ToolBar
-            self.toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height + 250, width: UIScreen.main.bounds.size.width, height: 40))
+            self.toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height + 300, width: UIScreen.main.bounds.size.width, height: 40))
             self.toolBar?.isTranslucent = true
             let doneBtn = UIBarButtonItem(title: StringConstants.done.localized, style: .done, target: self, action: #selector(onDoneButtonTapped))
             let cancelBtn = UIBarButtonItem(title: StringConstants.cancel.localized, style: .plain, target: self, action: #selector(onCancelBtnTapped))
@@ -134,8 +135,8 @@ class ViewController: BaseVC {
     private func showPickerViewWithAnimation() {
         if self.pickerView != nil {
             UIView.animate(withDuration: 0.5) {
-                self.pickerView?.frame.origin.y = UIScreen.main.bounds.size.height - 250
-                self.toolBar?.frame.origin.y = UIScreen.main.bounds.size.height - 250
+                self.pickerView?.frame.origin.y = UIScreen.main.bounds.size.height - 300
+                self.toolBar?.frame.origin.y = UIScreen.main.bounds.size.height - 300
             }
         }
     }
@@ -176,7 +177,7 @@ class ViewController: BaseVC {
     @objc func onDoneButtonTapped() {
         self.hidePickerViewWithAnimation()
         if userType == nil {
-            userType = UserType.allCases[0]
+            userType = self.userTypeDataSource[0]
         }
         self.updateUserType()
     }
@@ -221,22 +222,30 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
         
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return UserType.allCases.endIndex
+        return self.userTypeDataSource.endIndex
     }
         
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return UserType.allCases[row].text
+        return self.userTypeDataSource[row].text
     }
         
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        userType = UserType.allCases[row]
+        userType = self.userTypeDataSource[row]
     }
 }
 
 //MARK:- LoginDelegate
 extension ViewController: LoginControllerDelegate {
     func loginSuccess() {
-        AppRouter.goToHome()
+        if let userType = userType {
+            switch userType {
+            case .admin: AppRouter.goToAdminHomeVC()
+            case .vendor: AppRouter.goToVendorHomeVC()
+            case .deliveryBoy: AppRouter.goToLogin()
+            }
+        } else {
+            CommonFunctions.showToastWithMessage("Something wrong")
+        }
     }
     
     func loginFailed(message: String) {
