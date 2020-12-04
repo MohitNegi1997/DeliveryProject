@@ -37,7 +37,7 @@ class AdminHomeVC: BaseVC {
     }
     
     private func setupColors() {
-        
+        self.view.backgroundColor = AppColors.homeScreenBgColor
     }
     
     private func localizedView() {

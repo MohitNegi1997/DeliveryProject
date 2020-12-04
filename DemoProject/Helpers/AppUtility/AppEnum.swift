@@ -85,7 +85,9 @@ enum AdminSideMenu {
         case .home: return nil
         case .graph: return nil
         case .userCreation: return nil
-        case .setting: return nil
+        case .setting:
+            let nextVC = SettingVC.instantiate(fromAppStoryboard: .admin)
+            return nextVC
         case .logout: return nil
         }
     }

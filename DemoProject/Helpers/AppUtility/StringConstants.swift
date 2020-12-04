@@ -95,6 +95,13 @@ enum StringConstants: String {
     
     //MARK:- OrderStatusCell
     case deliveryDistance = "Delivery Distance"
+    
+    //MARK:- SettingVC
+    case petrolDieselPrice = "Petrol/Diesel Price"
+    case mileage = "Mileage"
+    case petrolPriceUnit = "AED"
+    case mileageUnit = "Km/L"
+    case submit = "Submit"
 
     //MARK:- Session Expired
     case session_Expired = "Session Expired"

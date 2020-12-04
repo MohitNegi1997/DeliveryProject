@@ -33,6 +33,7 @@
 		0C490CDC2576BDB40015070F /* SideMenuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C490CDB2576BDB40015070F /* SideMenuHeaderView.swift */; };
 		0C490CDE2576BE8B0015070F /* SideMenuHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C490CDD2576BE8B0015070F /* SideMenuHeaderView.xib */; };
 		0C490CE02576C3840015070F /* VendorFormVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C490CDF2576C3840015070F /* VendorFormVC.swift */; };
+		0C6A30E6257AC4F7006B1D51 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6A30E5257AC4F7006B1D51 /* SettingVC.swift */; };
 		0C71BD36257AAC9C00551731 /* Admin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C71BD35257AAC9C00551731 /* Admin.storyboard */; };
 		0C71BD39257AAD9E00551731 /* AdminHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C71BD38257AAD9E00551731 /* AdminHomeVC.swift */; };
 		0CDF8B042573C7B100604DA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDF8B032573C7B100604DA3 /* AppDelegate.swift */; };
@@ -115,6 +116,7 @@
 		0C490CDB2576BDB40015070F /* SideMenuHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuHeaderView.swift; sourceTree = "<group>"; };
 		0C490CDD2576BE8B0015070F /* SideMenuHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuHeaderView.xib; sourceTree = "<group>"; };
 		0C490CDF2576C3840015070F /* VendorFormVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorFormVC.swift; sourceTree = "<group>"; };
+		0C6A30E5257AC4F7006B1D51 /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
 		0C71BD35257AAC9C00551731 /* Admin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Admin.storyboard; sourceTree = "<group>"; };
 		0C71BD38257AAD9E00551731 /* AdminHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminHomeVC.swift; sourceTree = "<group>"; };
 		0CDF8B002573C7B100604DA3 /* DemoProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -252,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				0C71BD38257AAD9E00551731 /* AdminHomeVC.swift */,
+				0C6A30E5257AC4F7006B1D51 /* SettingVC.swift */,
 			);
 			path = AdminModule;
 			sourceTree = "<group>";
@@ -647,6 +650,7 @@
 				0CDF8B302573E14900604DA3 /* ApiKeys.swift in Sources */,
 				0C490CD32576AA580015070F /* VendorHomeVC.swift in Sources */,
 				0CDF8B722573F70F00604DA3 /* CommonFunctions.swift in Sources */,
+				0C6A30E6257AC4F7006B1D51 /* SettingVC.swift in Sources */,
 				0CDF8B622573ED6600604DA3 /* UIApplicationExtension.swift in Sources */,
 				0CDF8B572573EAF500604DA3 /* AppStoryboard.swift in Sources */,
 				0CDF8B042573C7B100604DA3 /* AppDelegate.swift in Sources */,

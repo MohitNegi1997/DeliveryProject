@@ -39,8 +39,13 @@ class VendorHomeVC: BaseVC {
     
     //MARK:- Private Methods
     private func initialSetup() {
+        self.setupColors()
         self.setupTblView()
         self.setupNavigation()
+    }
+    
+    private func setupColors() {
+        self.view.backgroundColor = AppColors.homeScreenBgColor
     }
     
     private func setupNavigation() {
