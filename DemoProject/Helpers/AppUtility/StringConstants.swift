@@ -57,6 +57,12 @@ enum StringConstants: String {
     case pickupDate = "Pick-Up Date"
     case deliveryTime = "Delivery Time"
     case deliveryDate = "Delivery Date"
+    case firstName = "First Name"
+    case lastName = "Last Name"
+    case role = "Role"
+    case userPhoneNo = "Phone"
+    case userName = "User Name"
+    case userPassword = "User Password"
     
     case enterVendorNamePlaceholder = "Enter Vendor's Name"
     case enterConsigneeNamePlaceholder = "Enter Consignee Name"
@@ -68,8 +74,11 @@ enum StringConstants: String {
     case pickupDatePlaceholder = "Pick-Up Date:"
     case deliveryTimePlaceholder = "Delivery Time:"
     case deliveryDatePlaceholder = "Delivery Date:"
-    
     case requiredFields = "Required Fields"
+    case enterFirstNamePlaceholder = "Enter First Name"
+    case enterLastNamePlaceholder = "Enter Last Name"
+    case chooseRolePlaceholder = "Choose Role"
+    case phoneNumberPlaceholder = "Phone Number"
     
     //MARK:- DimensionsCell
     case dimensions = "Dimensions"
@@ -87,11 +96,14 @@ enum StringConstants: String {
     case placeOrder = "Place Order"
     case editOrder = "Edit Order"
     case saveChanges = "Save Changes"
+    case createUser = "Create"
     
     //MARK:- AddressCell
     case location = "Location"
     case enterPickupAddress = "Enter Pickup Address"
     case enterDeliveryAddress = "Enter Delivery Address"
+    case address = "Address"
+    case addressPlaceHolder = "Enter Address"
     
     //MARK:- OrderStatusCell
     case deliveryDistance = "Delivery Distance"

@@ -11,7 +11,7 @@ import UIKit
 class VendorFormVC: BaseVC {
 
     //MARK:- Properties
-    private let vendorDataSource: [VendorFormData] = VendorFormData.getDataSource()
+    private let vendorDataSource: [VendorFormType] = VendorFormType.getDataSource()
     public var isDataAvailable: Bool = true
     
     //MARK:- IBOutlets
@@ -116,7 +116,7 @@ extension VendorFormVC: UITableViewDelegate, UITableViewDataSource {
         switch self.vendorDataSource[indexPath.row] {
         case .location:
             let cell = tableView.dequeueCell(with: AddressCell.self, indexPath: indexPath)
-            cell.configureCell(with: "Location")
+            cell.configureCellForVendor(with: StringConstants.location.localized)
             return cell
         case .dimensions:
             let cell = tableView.dequeueCell(with: DimensionsCell.self, indexPath: indexPath)
@@ -126,18 +126,18 @@ extension VendorFormVC: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueCell(with: RefrigerationRequiredCell.self, indexPath: indexPath)
             cell.configureCell()
             return cell
-        case .name(let txtField),
-             .consignee(let txtField),
-             .consigneeContactDetail(let txtField),
-             .parcelDetail(let txtField),
-             .instructions(let txtField),
-             .weight(let txtField),
-             .deliveryDate(let txtField),
-             .deliveryTime(let txtField),
-             .pickupDate(let txtField),
-             .pickupTime(let txtField):
+        case .name(let tfType),
+             .consignee(let tfType),
+             .consigneeContactDetail(let tfType),
+             .parcelDetail(let tfType),
+             .instructions(let tfType),
+             .weight(let tfType),
+             .deliveryDate(let tfType),
+             .deliveryTime(let tfType),
+             .pickupDate(let tfType),
+             .pickupTime(let tfType):
             let cell = tableView.dequeueCell(with: CommonTFCell.self, indexPath: indexPath)
-            cell.configureCell(with: txtField)
+            cell.configureCellForVendor(with: tfType)
             cell.onTapBtn = { [weak self] in
                 guard let self = self else { return }
                 switch self.vendorDataSource[indexPath.row] {
@@ -149,7 +149,7 @@ extension VendorFormVC: UITableViewDelegate, UITableViewDataSource {
             return cell
         case .buttons:
             let cell = tableView.dequeueCell(with: SubmitButtonCell.self, indexPath: indexPath)
-            cell.configureCell(isEditHidden: self.isDataAvailable)
+            cell.configureCellForVendor(isEditHidden: self.isDataAvailable)
             return cell
         }
     }
@@ -159,6 +159,6 @@ extension VendorFormVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90.0
+        return self.tableView(tableView, heightForRowAt: indexPath)
     }
 }

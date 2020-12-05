@@ -171,5 +171,35 @@
             </objects>
             <point key="canvasLocation" x="704.34782608695662" y="52.901785714285715"/>
         </scene>
+        <!--User CreationVC-->
+        <scene sceneID="ZGb-ki-Td8">
+            <objects>
+                <viewController storyboardIdentifier="UserCreationVC" id="5c5-OH-5BK" customClass="UserCreationVC" customModule="DemoProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6Vt-r0-mxO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UGO-yJ-o77">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <constraints>
+                            <constraint firstItem="yP2-Qh-glA" firstAttribute="trailing" secondItem="UGO-yJ-o77" secondAttribute="trailing" id="8kx-R9-8is"/>
+                            <constraint firstAttribute="bottom" secondItem="UGO-yJ-o77" secondAttribute="bottom" id="Qbf-Vu-31s"/>
+                            <constraint firstItem="UGO-yJ-o77" firstAttribute="top" secondItem="yP2-Qh-glA" secondAttribute="top" id="RaY-pv-d8f"/>
+                            <constraint firstItem="UGO-yJ-o77" firstAttribute="leading" secondItem="yP2-Qh-glA" secondAttribute="leading" id="fj8-OI-M2q"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="yP2-Qh-glA"/>
+                    </view>
+                    <connections>
+                        <outlet property="userCreationTblView" destination="UGO-yJ-o77" id="Vth-PD-gAx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lms-i8-Qyr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1559" y="53"/>
+        </scene>
     </scenes>
 </document>

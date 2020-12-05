@@ -36,6 +36,7 @@
 		0C6A30E6257AC4F7006B1D51 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6A30E5257AC4F7006B1D51 /* SettingVC.swift */; };
 		0C71BD36257AAC9C00551731 /* Admin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C71BD35257AAC9C00551731 /* Admin.storyboard */; };
 		0C71BD39257AAD9E00551731 /* AdminHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C71BD38257AAD9E00551731 /* AdminHomeVC.swift */; };
+		0C73A23C257B5328007BCBE0 /* UserCreationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C73A23B257B5328007BCBE0 /* UserCreationVC.swift */; };
 		0CDF8B042573C7B100604DA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDF8B032573C7B100604DA3 /* AppDelegate.swift */; };
 		0CDF8B082573C7B100604DA3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDF8B072573C7B100604DA3 /* ViewController.swift */; };
 		0CDF8B0B2573C7B100604DA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CDF8B092573C7B100604DA3 /* Main.storyboard */; };
@@ -119,6 +120,7 @@
 		0C6A30E5257AC4F7006B1D51 /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
 		0C71BD35257AAC9C00551731 /* Admin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Admin.storyboard; sourceTree = "<group>"; };
 		0C71BD38257AAD9E00551731 /* AdminHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminHomeVC.swift; sourceTree = "<group>"; };
+		0C73A23B257B5328007BCBE0 /* UserCreationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCreationVC.swift; sourceTree = "<group>"; };
 		0CDF8B002573C7B100604DA3 /* DemoProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CDF8B032573C7B100604DA3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CDF8B072573C7B100604DA3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 			children = (
 				0C71BD38257AAD9E00551731 /* AdminHomeVC.swift */,
 				0C6A30E5257AC4F7006B1D51 /* SettingVC.swift */,
+				0C73A23B257B5328007BCBE0 /* UserCreationVC.swift */,
 			);
 			path = AdminModule;
 			sourceTree = "<group>";
@@ -676,6 +679,7 @@
 				0CDF8B5A2573EB6600604DA3 /* UIViewControllerExtension.swift in Sources */,
 				0CDF8B682573F1E200604DA3 /* TrueTimeManager.swift in Sources */,
 				0CDF8B322573E1B700604DA3 /* AppImage.swift in Sources */,
+				0C73A23C257B5328007BCBE0 /* UserCreationVC.swift in Sources */,
 				0C10FB1E257806B0001FDDD4 /* SubmitButtonCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

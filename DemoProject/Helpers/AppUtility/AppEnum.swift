@@ -37,6 +37,7 @@ enum UserType: String {
     }
 }
 
+//MARK:- Vendor Side Menu Enum
 enum VendorSideMenu {
     case home, vendorForm, logout
     
@@ -67,6 +68,7 @@ enum VendorSideMenu {
     }
 }
 
+//MARK:- Admin Side Menu Enum
 enum AdminSideMenu {
     case home, graph, userCreation, setting, logout
     
@@ -84,7 +86,9 @@ enum AdminSideMenu {
         switch self {
         case .home: return nil
         case .graph: return nil
-        case .userCreation: return nil
+        case .userCreation:
+            let nextVC = UserCreationVC.instantiate(fromAppStoryboard: .admin)
+            return nextVC
         case .setting:
             let nextVC = SettingVC.instantiate(fromAppStoryboard: .admin)
             return nextVC
@@ -103,6 +107,7 @@ enum AdminSideMenu {
     }
 }
 
+//MARK:- Delivery Side Menu Enum
 enum DeliverySideMenu {
     case home, logout
     
@@ -128,6 +133,7 @@ enum DeliverySideMenu {
     }
 }
 
+//MARK:- TextField Type in Application
 enum TextFieldType {
     case name
     case consignee
@@ -139,6 +145,12 @@ enum TextFieldType {
     case pickupDate
     case deliveryTime
     case deliveryDate
+    case firstName
+    case lastName
+    case role
+    case userPhoneNo
+    case userName
+    case password
     
     var text: String {
         switch self {
@@ -152,6 +164,12 @@ enum TextFieldType {
         case .pickupDate: return StringConstants.pickupDate.localized
         case .deliveryTime: return StringConstants.deliveryTime.localized
         case .deliveryDate: return StringConstants.deliveryDate.localized
+        case .firstName: return StringConstants.firstName.localized
+        case .lastName: return StringConstants.lastName.localized
+        case .role: return StringConstants.role.localized
+        case .userPhoneNo: return StringConstants.userPhoneNo.localized
+        case .userName: return StringConstants.userName.localized
+        case .password: return StringConstants.userPassword.localized
         }
     }
     
@@ -167,11 +185,18 @@ enum TextFieldType {
         case .pickupDate: return StringConstants.pickupDatePlaceholder.localized
         case .deliveryTime: return StringConstants.deliveryTimePlaceholder.localized
         case .deliveryDate: return StringConstants.deliveryDatePlaceholder.localized
+        case .firstName: return StringConstants.enterFirstNamePlaceholder.localized
+        case .lastName: return StringConstants.enterLastNamePlaceholder.localized
+        case .role: return StringConstants.chooseRolePlaceholder.localized
+        case .userPhoneNo: return StringConstants.phoneNumberPlaceholder.localized
+        case .userName: return StringConstants.enter_User_Name.localized
+        case .password: return StringConstants.enter_Password.localized
         }
     }
 }
 
-enum VendorFormData {
+//MARK:- VendorForm Enum
+enum VendorFormType {
 //    case requiredFields
     case name(TextFieldType)
     case consignee(TextFieldType)
@@ -188,13 +213,33 @@ enum VendorFormData {
     case deliveryTime(TextFieldType)
     case buttons
     
-    static func getDataSource() -> [VendorFormData] {
-        let dataSource: [VendorFormData] = [.name(.name),.consignee(.consignee),
+    static func getDataSource() -> [VendorFormType] {
+        let dataSource: [VendorFormType] = [.name(.name),.consignee(.consignee),
                                             .consigneeContactDetail(.consigneeContactDetail), location,
                                             .parcelDetail(.parcelDetail),.dimensions,.weight(.weight),
                                             .instructions(.instructions),.refrigerationRequried,
                                             .pickupTime(.pickupTime),.pickupDate(.pickupDate),
                                             .deliveryTime(.deliveryTime),.deliveryDate(.deliveryDate),.buttons]
+        return dataSource
+    }
+}
+
+//MARK:- UserCreation Enum
+enum UserCreationType {
+    case firstName(TextFieldType)
+    case lastName(TextFieldType)
+    case chooseRole(TextFieldType)
+    case phoneNo(TextFieldType)
+    case userName(TextFieldType)
+    case password(TextFieldType)
+    case address
+    case button
+    
+    static func getDataSource() -> [UserCreationType] {
+        let dataSource: [UserCreationType] = [.firstName(.firstName),.lastName(.lastName),
+                                              .chooseRole(.role),.phoneNo(.userPhoneNo),
+                                              .userName(.userName),.password(.password),
+                                              .address,.button]
         return dataSource
     }
 }

@@ -34,7 +34,6 @@ class SubmitButtonCell: UITableViewCell {
     private func setupCell() {
         self.setupFonts()
         self.setupColors()
-        self.localizedCell()
     }
     
     private func setupFonts() {
@@ -49,15 +48,18 @@ class SubmitButtonCell: UITableViewCell {
         self.editBtn.backgroundColor = AppColors.themeColor
     }
     
-    private func localizedCell() {
+    //MARK:- Public Methods
+    public func configureCellForVendor(isEditHidden: Bool) {
         self.submitBtn.setTitle(StringConstants.placeOrder.localized.uppercased(), for: .normal)
         self.editBtn.setTitle(StringConstants.editOrder.localized, for: .normal)
-    }
-    
-    //MARK:- Public Methods
-    public func configureCell(isEditHidden: Bool) {
         self.editBtn.isHidden = isEditHidden
         self.submitBtn.isHidden = !isEditHidden
+    }
+    
+    public func configureCellForUserCreation() {
+        self.submitBtn.setTitle(StringConstants.createUser.localized.uppercased(), for: .normal)
+        self.editBtn.setTitle(StringConstants.editOrder.localized, for: .normal)
+        self.editBtn.isHidden = true
     }
     
     //MARK:- IBActions

@@ -58,10 +58,15 @@ class AddressCell: UITableViewCell {
     }
     
     //MARK:- Public Methods
-    public func configureCell(with text: String) {
-        self.lblTitle.text = StringConstants.location.localized + " *"
+    public func configureCellForVendor(with text: String) {
+        self.lblTitle.text = text + " *"
         self.firstAddressTextView.placeholder = StringConstants.enterPickupAddress.localized
         self.secondAddressTextView.placeholder = StringConstants.enterDeliveryAddress.localized
     }
     
+    public func configureCellForUserCreation(with text: String) {
+        self.lblTitle.text = text + " *"
+        self.firstAddressTextView.placeholder = StringConstants.addressPlaceHolder.localized
+        self.secondAddressView.isHidden = true
+    }
 }

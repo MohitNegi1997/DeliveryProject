@@ -52,7 +52,7 @@ class CommonTFCell: UITableViewCell {
     }
     
     //MARK:- Public Methods
-    public func configureCell(with textFieldType: TextFieldType) {
+    public func configureCellForVendor(with textFieldType: TextFieldType) {
         self.commonTxtField.setPlaceholder(with: textFieldType.placeHolder, color: AppColors.whiteColor)
         switch  textFieldType {
         case .pickupDate,.pickupTime,.deliveryTime,.deliveryDate:
@@ -65,6 +65,12 @@ class CommonTFCell: UITableViewCell {
             self.commonBtn.isHidden = true
             self.lblTitle.text = textFieldType.text + " *"
         }
+    }
+    
+    public func configureCellForUserCreation(with textFieldType: TextFieldType) {
+        self.commonTxtField.setPlaceholder(with: textFieldType.placeHolder, color: AppColors.whiteColor)
+        self.lblTitle.text = textFieldType.text + " *"
+        self.commonBtn.isHidden = textFieldType != .role
     }
     
     //MARK:- IBActions
