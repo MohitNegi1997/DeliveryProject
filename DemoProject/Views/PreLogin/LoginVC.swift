@@ -8,13 +8,12 @@
 
 import UIKit
 
-class ViewController: BaseVC {
+class LoginVC: BaseVC {
 
     //MARK:- Properties
     private var isSecurePassword: Bool = true
-    private var toolBar: UIToolbar? = nil
-    private var pickerView: UIPickerView? = nil
     private let userTypeDataSource: [UserType]  = [.admin, .vendor, .deliveryBoy]
+    private var selectedRole: UserType? = nil
     private let controller: LoginController = LoginController()
     
     //MARK:- IBOutlets
@@ -107,56 +106,24 @@ class ViewController: BaseVC {
     }
     
     private func showPickerView() {
-        if self.pickerView == nil {
-            self.pickerView = UIPickerView.init()
-            self.pickerView?.delegate = self
-            self.pickerView?.dataSource = self
-            self.pickerView?.backgroundColor = AppColors.blackColor
-            self.pickerView?.setValue(AppColors.whiteColor, forKey: "textColor")
-            self.pickerView?.autoresizingMask = .flexibleWidth
-            self.pickerView?.contentMode = .center
-            self.pickerView?.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height + 300, width: UIScreen.main.bounds.size.width, height: 300)
-            self.view.addSubview(self.pickerView!)
-            //ToolBar
-            self.toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height + 300, width: UIScreen.main.bounds.size.width, height: 40))
-            self.toolBar?.isTranslucent = true
-            let doneBtn = UIBarButtonItem(title: StringConstants.done.localized, style: .done, target: self, action: #selector(onDoneButtonTapped))
-            let cancelBtn = UIBarButtonItem(title: StringConstants.cancel.localized, style: .plain, target: self, action: #selector(onCancelBtnTapped))
-            doneBtn.tintColor = AppColors.whiteColor
-            cancelBtn.tintColor = AppColors.whiteColor
-            let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-            self.toolBar?.items = [cancelBtn, flexibleSpace, doneBtn]
-            self.toolBar?.barTintColor = AppColors.themeColor
-            self.view.addSubview(toolBar!)
-            self.showPickerViewWithAnimation()
+        let pickerVC = PickerVC.instantiate(fromAppStoryboard: .picker)
+        pickerVC.pickerDataSource = self.userTypeDataSource
+        pickerVC.onTapDone = { [weak self] (pickedType) in
+            guard let self = self else { return }
+            guard let roleType = pickedType as? UserType else { return }
+            self.selectedRole = roleType
+            self.updateUserType()
         }
-    }
-    
-    private func showPickerViewWithAnimation() {
-        if self.pickerView != nil {
-            UIView.animate(withDuration: 0.5) {
-                self.pickerView?.frame.origin.y = UIScreen.main.bounds.size.height - 300
-                self.toolBar?.frame.origin.y = UIScreen.main.bounds.size.height - 300
-            }
+        pickerVC.onTapCancel = { [weak self] in
+            guard let _ = self else { return }
+            print_debug("Tap on cancel button")
         }
-    }
-    
-    private func hidePickerViewWithAnimation() {
-        if self.pickerView != nil {
-            UIView.animate(withDuration: 0.5, animations: {
-                self.pickerView?.frame.origin.y = UIScreen.main.bounds.size.height + 200
-                self.toolBar?.frame.origin.y = UIScreen.main.bounds.size.height + 200
-            }) { (complete) in
-                self.toolBar?.removeFromSuperview()
-                self.pickerView?.removeFromSuperview()
-                self.pickerView = nil
-                self.toolBar = nil
-            }
-        }
+        pickerVC.modalPresentationStyle = .overCurrentContext
+        self.present(pickerVC, animated: false, completion: nil)
     }
     
     private func updateUserType() {
-        if let userType = userType {
+        if let userType = self.selectedRole {
             self.lblSelectUserType.text = userType.text
         }
     }
@@ -164,7 +131,7 @@ class ViewController: BaseVC {
     private func requestForLogin() {
         let userName = self.userNameTextField.value
         let password = self.passwordTextField.value
-        self.controller.requestForLogin(userName: userName, password: password, userType: userType)
+        self.controller.requestForLogin(userName: userName, password: password, userType: self.selectedRole)
     }
     
     //MARK:- Selector
@@ -172,19 +139,6 @@ class ViewController: BaseVC {
         sender.isSelected = !sender.isSelected
         self.isSecurePassword.toggle()
         self.setupPasswordRightView(isSecureText : self.isSecurePassword)
-    }
-    
-    @objc func onDoneButtonTapped() {
-        self.hidePickerViewWithAnimation()
-        if userType == nil {
-            userType = self.userTypeDataSource[0]
-        }
-        self.updateUserType()
-    }
-    
-    @objc func onCancelBtnTapped() {
-        self.hidePickerViewWithAnimation()
-        userType = nil
     }
     
     //MARK:- IBActions
@@ -199,7 +153,7 @@ class ViewController: BaseVC {
 }
 
 //MARK:- TextFieldDelegate
-extension ViewController: UITextFieldDelegate {
+extension LoginVC: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == self.userNameTextField {
@@ -209,39 +163,17 @@ extension ViewController: UITextFieldDelegate {
         }
         return true
     }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        self.hidePickerViewWithAnimation()
-    }
-}
-
-//MARK:- PickerViewDelegate & DataSource
-extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-        
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return self.userTypeDataSource.endIndex
-    }
-        
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return self.userTypeDataSource[row].text
-    }
-        
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        userType = self.userTypeDataSource[row]
-    }
 }
 
 //MARK:- LoginDelegate
-extension ViewController: LoginControllerDelegate {
+extension LoginVC: LoginControllerDelegate {
     func loginSuccess() {
-        if let userType = userType {
+        userType = self.selectedRole
+        if let userType = self.selectedRole {
             switch userType {
             case .admin: AppRouter.goToAdminHomeVC()
             case .vendor: AppRouter.goToVendorHomeVC()
-            case .deliveryBoy: AppRouter.goToLogin()
+            case .deliveryBoy: AppRouter.goToDeliveryBoyHomeVC()
             }
         } else {
             CommonFunctions.showToastWithMessage("Something wrong")

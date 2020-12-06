@@ -129,6 +129,10 @@ enum StringConstants: String {
     case completed = "Completed"
     case notCompleted = "Not Completed"
     
+    //MARK:- DeliveryBoySideMenu Enum
+    case pendingTask = "Pending Task"
+    case completedTask = "Completed Task"
+    
     //MARK:- Session Expired
     case session_Expired = "Session Expired"
 }

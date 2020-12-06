@@ -27,7 +27,7 @@ extension AppDelegate {
             switch userType {
             case .admin: AppRouter.goToAdminHomeVC()
             case .vendor: AppRouter.goToVendorHomeVC()
-            case .deliveryBoy: AppRouter.goToLogin()
+            case .deliveryBoy: AppRouter.goToDeliveryBoyHomeVC()
             }
         } else {
             AppRouter.goToLogin()

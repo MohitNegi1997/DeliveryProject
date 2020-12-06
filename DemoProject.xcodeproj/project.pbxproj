@@ -37,14 +37,19 @@
 		0C71BD36257AAC9C00551731 /* Admin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C71BD35257AAC9C00551731 /* Admin.storyboard */; };
 		0C71BD39257AAD9E00551731 /* AdminHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C71BD38257AAD9E00551731 /* AdminHomeVC.swift */; };
 		0C73A23C257B5328007BCBE0 /* UserCreationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C73A23B257B5328007BCBE0 /* UserCreationVC.swift */; };
+		0C90729D257D32CF001FC6EB /* DeliveryBoy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C90729C257D32CF001FC6EB /* DeliveryBoy.storyboard */; };
+		0C9072A0257D331A001FC6EB /* DeliveryBoyHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C90729F257D331A001FC6EB /* DeliveryBoyHomeVC.swift */; };
+		0C9072A2257D4DC9001FC6EB /* DeliveryStatusVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9072A1257D4DC9001FC6EB /* DeliveryStatusVC.swift */; };
+		0CC26DBB257CE4C30033F1D0 /* Picker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CC26DBA257CE4C30033F1D0 /* Picker.storyboard */; };
+		0CC26DBE257CE56A0033F1D0 /* PickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC26DBD257CE56A0033F1D0 /* PickerVC.swift */; };
 		0CCA2F11257CBD6300B010AD /* AdminFilterHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA2F10257CBD6300B010AD /* AdminFilterHeaderView.swift */; };
 		0CCA2F13257CBD6E00B010AD /* AdminFilterHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CCA2F12257CBD6E00B010AD /* AdminFilterHeaderView.xib */; };
 		0CCA2F16257CC10700B010AD /* FilterCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA2F14257CC10700B010AD /* FilterCollectionCell.swift */; };
 		0CCA2F17257CC10700B010AD /* FilterCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CCA2F15257CC10700B010AD /* FilterCollectionCell.xib */; };
 		0CCA2F19257CCC2B00B010AD /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA2F18257CCC2B00B010AD /* UILabelExtension.swift */; };
 		0CDF8B042573C7B100604DA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDF8B032573C7B100604DA3 /* AppDelegate.swift */; };
-		0CDF8B082573C7B100604DA3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDF8B072573C7B100604DA3 /* ViewController.swift */; };
-		0CDF8B0B2573C7B100604DA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CDF8B092573C7B100604DA3 /* Main.storyboard */; };
+		0CDF8B082573C7B100604DA3 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDF8B072573C7B100604DA3 /* LoginVC.swift */; };
+		0CDF8B0B2573C7B100604DA3 /* PreLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CDF8B092573C7B100604DA3 /* PreLogin.storyboard */; };
 		0CDF8B0D2573C7B200604DA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CDF8B0C2573C7B200604DA3 /* Assets.xcassets */; };
 		0CDF8B102573C7B200604DA3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CDF8B0E2573C7B200604DA3 /* LaunchScreen.storyboard */; };
 		0CDF8B252573D59A00604DA3 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDF8B242573D59A00604DA3 /* BaseVC.swift */; };
@@ -126,6 +131,11 @@
 		0C71BD35257AAC9C00551731 /* Admin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Admin.storyboard; sourceTree = "<group>"; };
 		0C71BD38257AAD9E00551731 /* AdminHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminHomeVC.swift; sourceTree = "<group>"; };
 		0C73A23B257B5328007BCBE0 /* UserCreationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCreationVC.swift; sourceTree = "<group>"; };
+		0C90729C257D32CF001FC6EB /* DeliveryBoy.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DeliveryBoy.storyboard; sourceTree = "<group>"; };
+		0C90729F257D331A001FC6EB /* DeliveryBoyHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryBoyHomeVC.swift; sourceTree = "<group>"; };
+		0C9072A1257D4DC9001FC6EB /* DeliveryStatusVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryStatusVC.swift; sourceTree = "<group>"; };
+		0CC26DBA257CE4C30033F1D0 /* Picker.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Picker.storyboard; sourceTree = "<group>"; };
+		0CC26DBD257CE56A0033F1D0 /* PickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerVC.swift; sourceTree = "<group>"; };
 		0CCA2F10257CBD6300B010AD /* AdminFilterHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminFilterHeaderView.swift; sourceTree = "<group>"; };
 		0CCA2F12257CBD6E00B010AD /* AdminFilterHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdminFilterHeaderView.xib; sourceTree = "<group>"; };
 		0CCA2F14257CC10700B010AD /* FilterCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionCell.swift; sourceTree = "<group>"; };
@@ -133,8 +143,8 @@
 		0CCA2F18257CCC2B00B010AD /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
 		0CDF8B002573C7B100604DA3 /* DemoProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CDF8B032573C7B100604DA3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0CDF8B072573C7B100604DA3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		0CDF8B0A2573C7B100604DA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0CDF8B072573C7B100604DA3 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		0CDF8B0A2573C7B100604DA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PreLogin.storyboard; sourceTree = "<group>"; };
 		0CDF8B0C2573C7B200604DA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CDF8B0F2573C7B200604DA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0CDF8B112573C7B200604DA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -219,7 +229,7 @@
 		0C3F099425767D540091E120 /* PreLogin */ = {
 			isa = PBXGroup;
 			children = (
-				0CDF8B072573C7B100604DA3 /* ViewController.swift */,
+				0CDF8B072573C7B100604DA3 /* LoginVC.swift */,
 			);
 			path = PreLogin;
 			sourceTree = "<group>";
@@ -246,7 +256,6 @@
 			children = (
 				0C490CD22576AA580015070F /* VendorHomeVC.swift */,
 				0C490CDF2576C3840015070F /* VendorFormVC.swift */,
-				0C2B70BA2577844000AC309F /* DatePickerVC.swift */,
 			);
 			path = VenderModule;
 			sourceTree = "<group>";
@@ -270,6 +279,24 @@
 				0C73A23B257B5328007BCBE0 /* UserCreationVC.swift */,
 			);
 			path = AdminModule;
+			sourceTree = "<group>";
+		};
+		0C90729E257D3305001FC6EB /* DeliveryBoyModule */ = {
+			isa = PBXGroup;
+			children = (
+				0C90729F257D331A001FC6EB /* DeliveryBoyHomeVC.swift */,
+				0C9072A1257D4DC9001FC6EB /* DeliveryStatusVC.swift */,
+			);
+			path = DeliveryBoyModule;
+			sourceTree = "<group>";
+		};
+		0CC26DBC257CE54A0033F1D0 /* Pickers */ = {
+			isa = PBXGroup;
+			children = (
+				0C2B70BA2577844000AC309F /* DatePickerVC.swift */,
+				0CC26DBD257CE56A0033F1D0 /* PickerVC.swift */,
+			);
+			path = Pickers;
 			sourceTree = "<group>";
 		};
 		0CCA2F0F257CBD1D00B010AD /* AdminHomeCell */ = {
@@ -366,6 +393,8 @@
 		0CDF8B1F2573C96700604DA3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0C90729E257D3305001FC6EB /* DeliveryBoyModule */,
+				0CC26DBC257CE54A0033F1D0 /* Pickers */,
 				0C71BD37257AAD6E00551731 /* AdminModule */,
 				0C490CD12576A8B20015070F /* VenderModule */,
 				0C490CCA2576A4780015070F /* SideMenu */,
@@ -387,11 +416,13 @@
 			isa = PBXGroup;
 			children = (
 				0CDF8B222573D51600604DA3 /* Xibs */,
-				0CDF8B092573C7B100604DA3 /* Main.storyboard */,
+				0CDF8B092573C7B100604DA3 /* PreLogin.storyboard */,
 				0CDF8B0E2573C7B200604DA3 /* LaunchScreen.storyboard */,
 				0C3F099225767BA70091E120 /* Vendor.storyboard */,
 				0C490CCF2576A7BE0015070F /* SideMenu.storyboard */,
 				0C71BD35257AAC9C00551731 /* Admin.storyboard */,
+				0CC26DBA257CE4C30033F1D0 /* Picker.storyboard */,
+				0C90729C257D32CF001FC6EB /* DeliveryBoy.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -592,6 +623,8 @@
 				0CDF8B412573E31600604DA3 /* SF-Pro-Text-Regular.otf in Resources */,
 				0C490CDE2576BE8B0015070F /* SideMenuHeaderView.xib in Resources */,
 				0C490CD02576A7BE0015070F /* SideMenu.storyboard in Resources */,
+				0CC26DBB257CE4C30033F1D0 /* Picker.storyboard in Resources */,
+				0C90729D257D32CF001FC6EB /* DeliveryBoy.storyboard in Resources */,
 				0C10FB1B2577ED26001FDDD4 /* RefrigerationRequiredCell.xib in Resources */,
 				0CDF8B492573E31600604DA3 /* SF-Pro-Text-Medium.otf in Resources */,
 				0CDF8B452573E31600604DA3 /* SFProText-Italic.otf in Resources */,
@@ -600,7 +633,7 @@
 				0CFF52122577521C00FDFA1C /* CommonTFCell.xib in Resources */,
 				0CDF8B4C2573E31600604DA3 /* SF-Pro-Text-BoldItalic.otf in Resources */,
 				0C71BD36257AAC9C00551731 /* Admin.storyboard in Resources */,
-				0CDF8B0B2573C7B100604DA3 /* Main.storyboard in Resources */,
+				0CDF8B0B2573C7B100604DA3 /* PreLogin.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -655,6 +688,7 @@
 			files = (
 				0CFF52112577521C00FDFA1C /* CommonTFCell.swift in Sources */,
 				0C2B70C225779C2100AC309F /* AddressCell.swift in Sources */,
+				0C9072A2257D4DC9001FC6EB /* DeliveryStatusVC.swift in Sources */,
 				0CDF8B5C2573EC5D00604DA3 /* ArrayExtension.swift in Sources */,
 				0CDF8B6C2573F57200604DA3 /* WebServices+EndPoints.swift in Sources */,
 				0CCA2F19257CCC2B00B010AD /* UILabelExtension.swift in Sources */,
@@ -662,7 +696,7 @@
 				0CCA2F11257CBD6300B010AD /* AdminFilterHeaderView.swift in Sources */,
 				0CDF8B662573EF8000604DA3 /* DateExtension.swift in Sources */,
 				0C2B70C52577A5D500AC309F /* UITextViewExtension.swift in Sources */,
-				0CDF8B082573C7B100604DA3 /* ViewController.swift in Sources */,
+				0CDF8B082573C7B100604DA3 /* LoginVC.swift in Sources */,
 				0C490CE02576C3840015070F /* VendorFormVC.swift in Sources */,
 				0CDF8B762573FC8700604DA3 /* AppUserDefaults.swift in Sources */,
 				0CDF8B512573E7FE00604DA3 /* AppGlobals.swift in Sources */,
@@ -698,10 +732,12 @@
 				0CDF8B2C2573DF9300604DA3 /* StringConstants.swift in Sources */,
 				0CDF8B2A2573D9C100604DA3 /* AppColors.swift in Sources */,
 				0C71BD39257AAD9E00551731 /* AdminHomeVC.swift in Sources */,
+				0CC26DBE257CE56A0033F1D0 /* PickerVC.swift in Sources */,
 				0CDF8B552573E90100604DA3 /* AppRouter.swift in Sources */,
 				0CDF8B252573D59A00604DA3 /* BaseVC.swift in Sources */,
 				0C490CD52576AEFB0015070F /* UIViewExtension.swift in Sources */,
 				0CDF8B642573EE1100604DA3 /* StringExtension.swift in Sources */,
+				0C9072A0257D331A001FC6EB /* DeliveryBoyHomeVC.swift in Sources */,
 				0CDF8B7A2573FDAC00604DA3 /* DeviceDetail.swift in Sources */,
 				0C10FB1A2577ED26001FDDD4 /* RefrigerationRequiredCell.swift in Sources */,
 				0CDF8B5A2573EB6600604DA3 /* UIViewControllerExtension.swift in Sources */,
@@ -715,12 +751,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		0CDF8B092573C7B100604DA3 /* Main.storyboard */ = {
+		0CDF8B092573C7B100604DA3 /* PreLogin.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				0CDF8B0A2573C7B100604DA3 /* Base */,
 			);
-			name = Main.storyboard;
+			name = PreLogin.storyboard;
 			sourceTree = "<group>";
 		};
 		0CDF8B0E2573C7B200604DA3 /* LaunchScreen.storyboard */ = {
@@ -855,7 +891,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 4K64P2PDAU;
 				INFOPLIST_FILE = "$(SRCROOT)/DemoProject/Resource/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -863,7 +899,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.toki1.mn;
+				PRODUCT_BUNDLE_IDENTIFIER = com.toki.mn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -877,7 +913,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 4K64P2PDAU;
 				INFOPLIST_FILE = "$(SRCROOT)/DemoProject/Resource/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -885,7 +921,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.toki1.mn;
+				PRODUCT_BUNDLE_IDENTIFIER = com.toki.mn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

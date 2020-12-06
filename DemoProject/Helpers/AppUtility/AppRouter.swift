@@ -13,7 +13,7 @@ enum AppRouter {
     
     /// Go To Login Screen
     static func goToLogin() {
-        let mainViewController = ViewController.instantiate(fromAppStoryboard: .preLogin)
+        let mainViewController = LoginVC.instantiate(fromAppStoryboard: .preLogin)
         let nvc = UINavigationController(rootViewController: mainViewController)
         nvc.isNavigationBarHidden = false
         UIView.transition(with: AppDelegate.shared.window!, duration: 0.33, options: UIView.AnimationOptions.transitionCrossDissolve, animations: {
@@ -40,6 +40,19 @@ enum AppRouter {
     //Go To VendorHome Screen
     static func goToAdminHomeVC() {
         let mainViewController = AdminHomeVC.instantiate(fromAppStoryboard: .admin)
+        let nvc = UINavigationController(rootViewController: mainViewController)
+        nvc.isNavigationBarHidden = false
+        UIView.transition(with: AppDelegate.shared.window!, duration: 0.33, options: UIView.AnimationOptions.transitionCrossDissolve, animations: {
+            AppDelegate.shared.window?.rootViewController =  nvc
+        }, completion: { (finished) in
+        })
+        AppDelegate.shared.window?.becomeKey()
+        AppDelegate.shared.window?.makeKeyAndVisible()
+    }
+    
+    //Go To VendorHome Screen
+    static func goToDeliveryBoyHomeVC() {
+        let mainViewController = DeliveryBoyHomeVC.instantiate(fromAppStoryboard: .deliveryBoy)
         let nvc = UINavigationController(rootViewController: mainViewController)
         nvc.isNavigationBarHidden = false
         UIView.transition(with: AppDelegate.shared.window!, duration: 0.33, options: UIView.AnimationOptions.transitionCrossDissolve, animations: {

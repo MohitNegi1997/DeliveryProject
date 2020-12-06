@@ -60,7 +60,6 @@ class DatePickerVC: BaseVC {
         self.toolbarView.backgroundColor = AppColors.themeColor
         self.datePickerView.backgroundColor = AppColors.blackColor
         self.customDatePicker?.setValue(AppColors.whiteColor, forKey: "textColor")
-        self.customDatePicker?.setValue(false, forKeyPath: "highlightsToday")
         self.customDatePicker?.backgroundColor = .clear
     }
     
@@ -71,14 +70,18 @@ class DatePickerVC: BaseVC {
     
     private func setupDatePicker() {
         let currentDate = TrueTimeManager.shared.currentTime
-        if #available(iOS 13.4, *) { customDatePicker?.preferredDatePickerStyle = .wheels }
+        if #available(iOS 13.4, *) {
+            customDatePicker?.preferredDatePickerStyle = .wheels
+        } else {
+            self.customDatePicker?.setValue(false, forKeyPath: "highlightsToday")
+        }
         if onlyTime {
             customDatePicker?.datePickerMode = .time
         } else {
             customDatePicker?.datePickerMode = .date
         }
         if let minimumDate = self.minDate {
-
+            customDatePicker?.minimumDate = minimumDate
         } else {
             customDatePicker?.minimumDate = currentDate
         }

@@ -16,8 +16,6 @@ class AdminHomeVC: BaseVC {
     private var selectedFilter: FilterType = .none
     private let statusFilterDataSource: [OrderStatus] = FilterType.getStatusDataSource()
     private let deliveryBoyDataSource: [String] = ["Mohit","Amit","Aman"]
-    private var toolBar: UIToolbar? = nil
-    private var pickerView: UIPickerView? = nil
 
     //MARK:- IBOutlets
     @IBOutlet weak var adminHomeTblView: UITableView!
@@ -62,58 +60,9 @@ class AdminHomeVC: BaseVC {
         self.removeNavigationBarBottomLine()
     }
     
-    private func showPickerView() {
-        if self.pickerView == nil {
-            self.pickerView = UIPickerView.init()
-            self.pickerView?.delegate = self
-            self.pickerView?.dataSource = self
-            self.pickerView?.backgroundColor = AppColors.blackColor
-            self.pickerView?.setValue(AppColors.whiteColor, forKey: "textColor")
-            self.pickerView?.autoresizingMask = .flexibleWidth
-            self.pickerView?.contentMode = .center
-            self.pickerView?.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height + 300, width: UIScreen.main.bounds.size.width, height: 300)
-            self.view.addSubview(self.pickerView!)
-            //ToolBar
-            self.toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height + 300, width: UIScreen.main.bounds.size.width, height: 40))
-            self.toolBar?.isTranslucent = true
-            let doneBtn = UIBarButtonItem(title: StringConstants.done.localized, style: .done, target: self, action: #selector(onDoneButtonTapped))
-            let cancelBtn = UIBarButtonItem(title: StringConstants.cancel.localized, style: .plain, target: self, action: #selector(onCancelBtnTapped))
-            doneBtn.tintColor = AppColors.whiteColor
-            cancelBtn.tintColor = AppColors.whiteColor
-            let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-            self.toolBar?.items = [cancelBtn, flexibleSpace, doneBtn]
-            self.toolBar?.barTintColor = AppColors.themeColor
-            self.view.addSubview(toolBar!)
-            self.showPickerViewWithAnimation()
-        }
-    }
-    
-    private func showPickerViewWithAnimation() {
-        if self.pickerView != nil {
-            UIView.animate(withDuration: 0.5) {
-                self.pickerView?.frame.origin.y = UIScreen.main.bounds.size.height - 300
-                self.toolBar?.frame.origin.y = UIScreen.main.bounds.size.height - 300
-            }
-        }
-    }
-    
-    private func hidePickerViewWithAnimation() {
-        if self.pickerView != nil {
-            UIView.animate(withDuration: 0.5, animations: {
-                self.pickerView?.frame.origin.y = UIScreen.main.bounds.size.height + 200
-                self.toolBar?.frame.origin.y = UIScreen.main.bounds.size.height + 200
-            }) { (complete) in
-                self.toolBar?.removeFromSuperview()
-                self.pickerView?.removeFromSuperview()
-                self.pickerView = nil
-                self.toolBar = nil
-            }
-        }
-    }
-    
     private func openDatePicker() {
-        let datePickerVC = DatePickerVC.instantiate(fromAppStoryboard: .vendor)
-        datePickerVC.minDate = Date()
+        let datePickerVC = DatePickerVC.instantiate(fromAppStoryboard: .picker)
+        datePickerVC.minDate = Date().minus(years: 1)
         datePickerVC.onTapDone = { [weak self] (date) in
             guard let _ = self else { return }
             print_debug(date)
@@ -128,21 +77,28 @@ class AdminHomeVC: BaseVC {
         self.present(datePickerVC, animated: false, completion: nil)
     }
     
+    private func showPickerView(with dataSource: [Any]) {
+        let pickerVC = PickerVC.instantiate(fromAppStoryboard: .picker)
+        pickerVC.pickerType = self.selectedFilter.pickerType
+        pickerVC.pickerDataSource = dataSource
+        pickerVC.onTapDone = { [weak self] (pickedType) in
+            guard let _ = self else { return }
+            ///To do later
+        }
+        pickerVC.onTapCancel = { [weak self] in
+            guard let self = self else { return }
+            self.selectedFilter = .none
+            self.adminHomeTblView.reloadData()
+        }
+        pickerVC.modalPresentationStyle = .overCurrentContext
+        self.present(pickerVC, animated: false, completion: nil)
+    }
+    
     //MARK:- Public Methods
     
     //MARK:- Selectors
     @objc func openSideMenu() {
         MenuC.sharedInstance.toggleMenu(navC: self.navigationController)
-    }
-    
-    @objc func onDoneButtonTapped() {
-        self.hidePickerViewWithAnimation()
-    }
-    
-    @objc func onCancelBtnTapped() {
-        self.hidePickerViewWithAnimation()
-        self.selectedFilter = .none
-        self.adminHomeTblView.reloadData()
     }
     
     //MARK:- IBActions
@@ -167,9 +123,9 @@ extension AdminHomeVC: UITableViewDelegate, UITableViewDataSource {
             self.selectedFilter = type
             self.adminHomeTblView.reloadData()
             switch type {
-            case .status: self.showPickerView()
+            case .status: self.showPickerView(with: self.statusFilterDataSource)
             case .date: self.openDatePicker()
-            case .deliveryBoyNames: self.showPickerView()
+            case .deliveryBoyNames: self.showPickerView(with: self.deliveryBoyDataSource)
             case .none: return
             }
         }
@@ -196,32 +152,5 @@ extension AdminHomeVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.0
-    }
-}
-
-//MARK:- PickerViewDelegate & DataSource
-extension AdminHomeVC: UIPickerViewDelegate, UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-        
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        switch self.selectedFilter {
-        case .status: return self.statusFilterDataSource.endIndex
-        case .deliveryBoyNames: return self.deliveryBoyDataSource.endIndex
-        default: return 0
-        }
-    }
-        
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        switch self.selectedFilter {
-        case .deliveryBoyNames: return self.deliveryBoyDataSource[row]
-        case .status: return self.statusFilterDataSource[row].text
-        default: return ""
-        }
-    }
-        
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
     }
 }

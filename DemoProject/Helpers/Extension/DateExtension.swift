@@ -458,3 +458,74 @@ extension Date {
     }
     
 }
+
+extension Date {
+    func plus(seconds s: UInt) -> Date {
+        return self.addComponentsToDate(seconds: Int(s), minutes: 0, hours: 0, days: 0, weeks: 0, months: 0, years: 0)
+    }
+    
+    func minus(seconds s: UInt) -> Date {
+        return self.addComponentsToDate(seconds: -Int(s), minutes: 0, hours: 0, days: 0, weeks: 0, months: 0, years: 0)
+    }
+    
+    func plus(minutes m: UInt) -> Date {
+        return self.addComponentsToDate(seconds: 0, minutes: Int(m), hours: 0, days: 0, weeks: 0, months: 0, years: 0)
+    }
+    
+    func minus(minutes m: UInt) -> Date {
+        return self.addComponentsToDate(seconds: 0, minutes: -Int(m), hours: 0, days: 0, weeks: 0, months: 0, years: 0)
+    }
+    
+    func plus(hours h: UInt) -> Date {
+        return self.addComponentsToDate(seconds: 0, minutes: 0, hours: Int(h), days: 0, weeks: 0, months: 0, years: 0)
+    }
+    
+    func minus(hours h: UInt) -> Date {
+        return self.addComponentsToDate(seconds: 0, minutes: 0, hours: -Int(h), days: 0, weeks: 0, months: 0, years: 0)
+    }
+    
+    func plus(days d: UInt) -> Date {
+        return self.addComponentsToDate(seconds: 0, minutes: 0, hours: 0, days: Int(d), weeks: 0, months: 0, years: 0)
+    }
+    
+    func minus(days d: UInt) -> Date {
+        return self.addComponentsToDate(seconds: 0, minutes: 0, hours: 0, days: -Int(d), weeks: 0, months: 0, years: 0)
+    }
+    
+    func plus(weeks w: UInt) -> Date {
+        return self.addComponentsToDate(seconds: 0, minutes: 0, hours: 0, days: 0, weeks: Int(w), months: 0, years: 0)
+    }
+    
+    func minus(weeks w: UInt) -> Date {
+        return self.addComponentsToDate(seconds: 0, minutes: 0, hours: 0, days: 0, weeks: -Int(w), months: 0, years: 0)
+    }
+    
+    func plus(months m: UInt) -> Date {
+        return self.addComponentsToDate(seconds: 0, minutes: 0, hours: 0, days: 0, weeks: 0, months: Int(m), years: 0)
+    }
+    
+    func minus(months m: UInt) -> Date {
+        return self.addComponentsToDate(seconds: 0, minutes: 0, hours: 0, days: 0, weeks: 0, months: -Int(m), years: 0)
+    }
+    
+    func plus(years y: UInt) -> Date {
+        return self.addComponentsToDate(seconds: 0, minutes: 0, hours: 0, days: 0, weeks: 0, months: 0, years: Int(y))
+    }
+    
+    func minus(years y: UInt) -> Date {
+        return self.addComponentsToDate(seconds: 0, minutes: 0, hours: 0, days: 0, weeks: 0, months: 0, years: -Int(y))
+    }
+    
+    fileprivate func addComponentsToDate(seconds sec: Int, minutes min: Int, hours hrs: Int, days d: Int, weeks wks: Int, months mts: Int, years yrs: Int) -> Date {
+           var dc = DateComponents()
+           dc.second = sec
+           dc.minute = min
+           dc.hour = hrs
+           dc.day = d
+           dc.weekOfYear = wks
+           dc.month = mts
+           dc.year = yrs
+           return Calendar.current.date(byAdding: dc, to: self)!
+       }
+       
+}

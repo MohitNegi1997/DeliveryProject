@@ -23,4 +23,7 @@ enum AppImage {
     static var settingImg: UIImage? { return UIImage(named: "settingImg") }
     static var userCreationImg: UIImage? { return UIImage(named: "userCreationImg") }
     static var vendorFormImg: UIImage? { return UIImage(named: "vendorFormImg") }
+    static var pendingTaskImg: UIImage? { return UIImage(named: "pendingTaskImg") }
+    static var completedTaskImg: UIImage? { return UIImage(named: "completedTaskImg") }
+
 }

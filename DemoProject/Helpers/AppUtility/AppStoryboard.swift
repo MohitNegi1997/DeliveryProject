@@ -10,10 +10,12 @@ import Foundation
 import UIKit
 
 enum AppStoryboard : String {
-    case preLogin = "Main"
+    case preLogin = "PreLogin"
     case sideMenu = "SideMenu"
     case vendor = "Vendor"
     case admin = "Admin"
+    case picker = "Picker"
+    case deliveryBoy = "DeliveryBoy"
 }
 
 extension AppStoryboard {

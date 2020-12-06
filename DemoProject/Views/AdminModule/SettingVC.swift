@@ -56,7 +56,7 @@ class SettingVC: BaseVC {
     }
     
     private func setupColors() {
-        self.view.backgroundColor = AppColors.homeScreenBgColor
+        self.view.backgroundColor = AppColors.blackColor
         self.containerView.backgroundColor = .clear
         self.lblPrice.textColor = AppColors.whiteColor
         self.lblMileage.textColor = AppColors.whiteColor

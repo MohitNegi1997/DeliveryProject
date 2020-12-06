@@ -13,7 +13,7 @@ class SideMenuVC: BaseVC {
     //MARK:- Properties
     private let vendorDataSource: [VendorSideMenu] = [.home, .vendorForm, .logout]
     private let adminDataSource: [AdminSideMenu] = [.home, .userCreation, .graph, .setting, .logout]
-    private let deliveryDataSource: [DeliverySideMenu] = [.home, .logout]
+    private let deliveryDataSource: [DeliverySideMenu] = [.home, .pendingTask, .completedTask, .logout]
     
     //MARK:- IBOutlets
     @IBOutlet weak var sideMenuTblView: UITableView!

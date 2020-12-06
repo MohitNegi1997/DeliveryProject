@@ -12,6 +12,7 @@ class UserCreationVC: BaseVC {
     
     //MARK:- Properties
     private let userCreationDataSource: [UserCreationType] = UserCreationType.getDataSource()
+    private let chooseRoleDataSource: [UserType] = [.vendor,.deliveryBoy]
     
     //MARK:- IBOutlets
     @IBOutlet weak var userCreationTblView: UITableView!
@@ -22,6 +23,11 @@ class UserCreationVC: BaseVC {
         self.initialSetup()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        CommonFunctions.disableIQKeyboard()
+    }
+    
     deinit {
         print_debug("UserCreation Deinit")
     }
@@ -30,6 +36,7 @@ class UserCreationVC: BaseVC {
     private func initialSetup() {
         self.setupNavigation()
         self.setupTblView()
+        CommonFunctions.enableIQKeybaord()
     }
         
     private func setupNavigation() {
@@ -50,6 +57,24 @@ class UserCreationVC: BaseVC {
         self.userCreationTblView.registerCell(with: CommonTFCell.self)
         self.userCreationTblView.registerCell(with: AddressCell.self)
         self.userCreationTblView.registerCell(with: SubmitButtonCell.self)
+    }
+    
+    private func openPickerView() {
+        let pickerVC = PickerVC.instantiate(fromAppStoryboard: .picker)
+        pickerVC.pickerType = .loginPicker
+        pickerVC.pickerDataSource = self.chooseRoleDataSource
+        pickerVC.onTapDone = { [weak self] (pickedType) in
+            guard let _ = self else { return }
+            ///To do later
+            guard let roleType = pickedType as? UserType else { return }
+            print_debug(roleType.text)
+        }
+        pickerVC.onTapCancel = { [weak self] in
+            guard let _ = self else { return }
+            print_debug("Tap on Cancel")
+        }
+        pickerVC.modalPresentationStyle = .overCurrentContext
+        self.present(pickerVC, animated: false, completion: nil)
     }
     
     //MARK:- Public Methods
@@ -75,6 +100,10 @@ extension UserCreationVC: UITableViewDelegate, UITableViewDataSource {
              .userName(let tfType), .password(let tfType):
             let cell = tableView.dequeueCell(with: CommonTFCell.self, indexPath: indexPath)
             cell.configureCellForUserCreation(with: tfType)
+            cell.onTapBtn = { [weak self] in
+                guard let self = self else { return }
+                self.openPickerView()
+            }
             return cell
         case .address:
             let cell = tableView.dequeueCell(with: AddressCell.self, indexPath: indexPath)

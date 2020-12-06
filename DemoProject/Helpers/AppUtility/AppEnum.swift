@@ -37,6 +37,14 @@ enum UserType: String {
     }
 }
 
+//MARK:- PickerType
+enum PickerType {
+    case none
+    case loginPicker
+    case statusPicker
+    case deliveryBoyPicker
+}
+
 //MARK:- Vendor Side Menu Enum
 enum VendorSideMenu {
     case home, vendorForm, logout
@@ -109,12 +117,14 @@ enum AdminSideMenu {
 
 //MARK:- Delivery Side Menu Enum
 enum DeliverySideMenu {
-    case home, logout
+    case home, pendingTask, completedTask, logout
     
     var text: String {
         switch self {
         case .home: return StringConstants.home.localized
         case .logout: return StringConstants.logout.localized
+        case .pendingTask: return StringConstants.pendingTask.localized
+        case .completedTask: return StringConstants.completedTask.localized
         }
     }
     
@@ -122,6 +132,14 @@ enum DeliverySideMenu {
         switch self {
         case .home: return nil
         case .logout: return nil
+        case .pendingTask:
+            let nextVC = DeliveryStatusVC.instantiate(fromAppStoryboard: .deliveryBoy)
+            nextVC.screenType = .pending
+            return nextVC
+        case .completedTask:
+            let nextVC = DeliveryStatusVC.instantiate(fromAppStoryboard: .deliveryBoy)
+            nextVC.screenType = .completed
+            return nextVC
         }
     }
     
@@ -129,6 +147,8 @@ enum DeliverySideMenu {
         switch self {
         case .home: return AppImage.homeImg
         case .logout: return AppImage.logoutImg
+        case .pendingTask: return AppImage.pendingTaskImg
+        case .completedTask: return AppImage.completedTaskImg
         }
     }
 }
@@ -257,6 +277,15 @@ enum FilterType {
         }
     }
     
+    var pickerType: PickerType {
+        switch self {
+        case .date: return .none
+        case .none: return .none
+        case .status: return .statusPicker
+        case .deliveryBoyNames: return .deliveryBoyPicker
+        }
+    }
+    
     static func getStatusDataSource() -> [OrderStatus] {
         let dataSource: [OrderStatus] = [.notCollected, .onRouteCollection,
                                          .collected, .onRouteDelivery,
@@ -278,6 +307,18 @@ enum OrderStatus {
         case .delivered: return StringConstants.delivered.localized
         case .completed: return StringConstants.completed.localized
         case .notCompleted: return StringConstants.notCompleted.localized
+        }
+    }
+}
+
+//MARK:- DeliveryBoy Screen Type
+enum OrderScreenType {
+    case pending, completed
+    
+    var text: String {
+        switch self {
+        case .pending: return StringConstants.pendingTask.localized
+        case .completed: return StringConstants.completedTask.localized
         }
     }
 }

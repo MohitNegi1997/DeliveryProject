@@ -71,7 +71,7 @@ class VendorFormVC: BaseVC {
     }
     
     private func openDatePicker(time: Bool) {
-        let datePickerVC = DatePickerVC.instantiate(fromAppStoryboard: .vendor)
+        let datePickerVC = DatePickerVC.instantiate(fromAppStoryboard: .picker)
         datePickerVC.onlyTime = time
         datePickerVC.onTapDone = { [weak self] (date) in
             guard let _ = self else { return }
