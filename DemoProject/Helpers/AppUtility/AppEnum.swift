@@ -243,3 +243,41 @@ enum UserCreationType {
         return dataSource
     }
 }
+
+//MARK:- Filter Enum
+enum FilterType {
+    case date, deliveryBoyNames, status, none
+    
+    var text: String {
+        switch self {
+        case .date: return StringConstants.date.localized
+        case .deliveryBoyNames: return StringConstants.deliveryBoyNames.localized
+        case .status: return StringConstants.status.localized
+        case .none: return ""
+        }
+    }
+    
+    static func getStatusDataSource() -> [OrderStatus] {
+        let dataSource: [OrderStatus] = [.notCollected, .onRouteCollection,
+                                         .collected, .onRouteDelivery,
+                                         .delivered, .completed, .notCompleted]
+        return dataSource
+    }
+}
+
+//MARK:- OrderStatus Enum
+enum OrderStatus {
+    case notCollected, onRouteCollection, collected, onRouteDelivery, delivered, completed, notCompleted
+    
+    var text: String {
+        switch self {
+        case .notCollected: return StringConstants.notCollected.localized
+        case .onRouteCollection: return StringConstants.onRouteCollection.localized
+        case .collected: return StringConstants.collected.localized
+        case .onRouteDelivery: return StringConstants.onRouteDelivery.localized
+        case .delivered: return StringConstants.delivered.localized
+        case .completed: return StringConstants.completed.localized
+        case .notCompleted: return StringConstants.notCompleted.localized
+        }
+    }
+}

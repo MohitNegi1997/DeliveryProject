@@ -115,6 +115,20 @@ enum StringConstants: String {
     case mileageUnit = "Km/L"
     case submit = "Submit"
 
+    //MARK:- FilterType Enum
+    case date = "Date"
+    case deliveryBoyNames = "Delivery Boy Names"
+    case status = "Status"
+    
+    //MARK:- OrderStatus Enum
+    case notCollected = "Not Collected"
+    case onRouteCollection = "On Route Collection"
+    case collected = "Collected"
+    case onRouteDelivery = "On Route Delivery"
+    case delivered = "Delivered"
+    case completed = "Completed"
+    case notCompleted = "Not Completed"
+    
     //MARK:- Session Expired
     case session_Expired = "Session Expired"
 }

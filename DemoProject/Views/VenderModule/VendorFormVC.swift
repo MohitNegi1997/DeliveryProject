@@ -90,8 +90,6 @@ class VendorFormVC: BaseVC {
         }
         datePickerVC.modalPresentationStyle = .overCurrentContext
         self.present(datePickerVC, animated: false, completion: nil)
-        
-
     }
     
     //MARK:- Public Methods

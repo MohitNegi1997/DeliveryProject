@@ -37,6 +37,11 @@
 		0C71BD36257AAC9C00551731 /* Admin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C71BD35257AAC9C00551731 /* Admin.storyboard */; };
 		0C71BD39257AAD9E00551731 /* AdminHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C71BD38257AAD9E00551731 /* AdminHomeVC.swift */; };
 		0C73A23C257B5328007BCBE0 /* UserCreationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C73A23B257B5328007BCBE0 /* UserCreationVC.swift */; };
+		0CCA2F11257CBD6300B010AD /* AdminFilterHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA2F10257CBD6300B010AD /* AdminFilterHeaderView.swift */; };
+		0CCA2F13257CBD6E00B010AD /* AdminFilterHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CCA2F12257CBD6E00B010AD /* AdminFilterHeaderView.xib */; };
+		0CCA2F16257CC10700B010AD /* FilterCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA2F14257CC10700B010AD /* FilterCollectionCell.swift */; };
+		0CCA2F17257CC10700B010AD /* FilterCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CCA2F15257CC10700B010AD /* FilterCollectionCell.xib */; };
+		0CCA2F19257CCC2B00B010AD /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA2F18257CCC2B00B010AD /* UILabelExtension.swift */; };
 		0CDF8B042573C7B100604DA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDF8B032573C7B100604DA3 /* AppDelegate.swift */; };
 		0CDF8B082573C7B100604DA3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDF8B072573C7B100604DA3 /* ViewController.swift */; };
 		0CDF8B0B2573C7B100604DA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CDF8B092573C7B100604DA3 /* Main.storyboard */; };
@@ -121,6 +126,11 @@
 		0C71BD35257AAC9C00551731 /* Admin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Admin.storyboard; sourceTree = "<group>"; };
 		0C71BD38257AAD9E00551731 /* AdminHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminHomeVC.swift; sourceTree = "<group>"; };
 		0C73A23B257B5328007BCBE0 /* UserCreationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCreationVC.swift; sourceTree = "<group>"; };
+		0CCA2F10257CBD6300B010AD /* AdminFilterHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminFilterHeaderView.swift; sourceTree = "<group>"; };
+		0CCA2F12257CBD6E00B010AD /* AdminFilterHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdminFilterHeaderView.xib; sourceTree = "<group>"; };
+		0CCA2F14257CC10700B010AD /* FilterCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionCell.swift; sourceTree = "<group>"; };
+		0CCA2F15257CC10700B010AD /* FilterCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCollectionCell.xib; sourceTree = "<group>"; };
+		0CCA2F18257CCC2B00B010AD /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
 		0CDF8B002573C7B100604DA3 /* DemoProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CDF8B032573C7B100604DA3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CDF8B072573C7B100604DA3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -262,6 +272,17 @@
 			path = AdminModule;
 			sourceTree = "<group>";
 		};
+		0CCA2F0F257CBD1D00B010AD /* AdminHomeCell */ = {
+			isa = PBXGroup;
+			children = (
+				0CCA2F10257CBD6300B010AD /* AdminFilterHeaderView.swift */,
+				0CCA2F12257CBD6E00B010AD /* AdminFilterHeaderView.xib */,
+				0CCA2F14257CC10700B010AD /* FilterCollectionCell.swift */,
+				0CCA2F15257CC10700B010AD /* FilterCollectionCell.xib */,
+			);
+			path = AdminHomeCell;
+			sourceTree = "<group>";
+		};
 		0CDF8AF72573C7B100604DA3 = {
 			isa = PBXGroup;
 			children = (
@@ -378,6 +399,7 @@
 		0CDF8B222573D51600604DA3 /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
+				0CCA2F0F257CBD1D00B010AD /* AdminHomeCell */,
 				0C10FB20257810DC001FDDD4 /* VendorHomeCell */,
 				0CFF520E2577516E00FDFA1C /* VenderFormCell */,
 				0C490CD62576B8D70015070F /* SideMenuCell */,
@@ -451,6 +473,7 @@
 				0CDF8B7B2574148700604DA3 /* UITextFieldExtension.swift */,
 				0C490CD42576AEFB0015070F /* UIViewExtension.swift */,
 				0C2B70C42577A5D500AC309F /* UITextViewExtension.swift */,
+				0CCA2F18257CCC2B00B010AD /* UILabelExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -551,7 +574,9 @@
 			files = (
 				0CDF8B4A2573E31600604DA3 /* SF-Pro-Text-Heavy.otf in Resources */,
 				0CDF8B482573E31600604DA3 /* SF-Pro-Text-Light.otf in Resources */,
+				0CCA2F17257CC10700B010AD /* FilterCollectionCell.xib in Resources */,
 				0CDF8B4D2573E31600604DA3 /* SF-Pro-Text-Bold.otf in Resources */,
+				0CCA2F13257CBD6E00B010AD /* AdminFilterHeaderView.xib in Resources */,
 				0CDF8B422573E31600604DA3 /* SF-Pro-Text-MediumItalic.otf in Resources */,
 				0C10FB24257810FC001FDDD4 /* OrderStatusCell.xib in Resources */,
 				0CDF8B102573C7B200604DA3 /* LaunchScreen.storyboard in Resources */,
@@ -632,7 +657,9 @@
 				0C2B70C225779C2100AC309F /* AddressCell.swift in Sources */,
 				0CDF8B5C2573EC5D00604DA3 /* ArrayExtension.swift in Sources */,
 				0CDF8B6C2573F57200604DA3 /* WebServices+EndPoints.swift in Sources */,
+				0CCA2F19257CCC2B00B010AD /* UILabelExtension.swift in Sources */,
 				0C10FB23257810FC001FDDD4 /* OrderStatusCell.swift in Sources */,
+				0CCA2F11257CBD6300B010AD /* AdminFilterHeaderView.swift in Sources */,
 				0CDF8B662573EF8000604DA3 /* DateExtension.swift in Sources */,
 				0C2B70C52577A5D500AC309F /* UITextViewExtension.swift in Sources */,
 				0CDF8B082573C7B100604DA3 /* ViewController.swift in Sources */,
@@ -650,6 +677,7 @@
 				0CDF8B702573F64400604DA3 /* AppNetworking.swift in Sources */,
 				0C3F099725767D7F0091E120 /* LoginController.swift in Sources */,
 				0CDF8B282573D8E500604DA3 /* AppFonts.swift in Sources */,
+				0CCA2F16257CC10700B010AD /* FilterCollectionCell.swift in Sources */,
 				0CDF8B302573E14900604DA3 /* ApiKeys.swift in Sources */,
 				0C490CD32576AA580015070F /* VendorHomeVC.swift in Sources */,
 				0CDF8B722573F70F00604DA3 /* CommonFunctions.swift in Sources */,

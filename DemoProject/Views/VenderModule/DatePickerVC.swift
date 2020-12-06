@@ -77,7 +77,11 @@ class DatePickerVC: BaseVC {
         } else {
             customDatePicker?.datePickerMode = .date
         }
-        customDatePicker?.minimumDate = currentDate
+        if let minimumDate = self.minDate {
+
+        } else {
+            customDatePicker?.minimumDate = currentDate
+        }
     }
     
     private func donebtnActionForDatePicker() {
