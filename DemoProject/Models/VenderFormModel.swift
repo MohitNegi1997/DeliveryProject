@@ -8,10 +8,10 @@
 
 import Foundation
 
-class VenderFormModel {
+class VendorFormModel {
     
     //MARK:- Shared Instance
-    static let shared = VenderFormModel()
+    static let shared = VendorFormModel()
     
     //MARK:- Properties
     var name: String = ""

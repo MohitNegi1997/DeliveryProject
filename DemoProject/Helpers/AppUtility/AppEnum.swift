@@ -215,6 +215,11 @@ enum TextFieldType {
     }
 }
 
+//MARK:- Dimension Type
+enum DimensionType {
+    case length, breadth, height
+}
+
 //MARK:- VendorForm Enum
 enum VendorFormType {
 //    case requiredFields
@@ -241,6 +246,25 @@ enum VendorFormType {
                                             .pickupTime(.pickupTime),.pickupDate(.pickupDate),
                                             .deliveryTime(.deliveryTime),.deliveryDate(.deliveryDate),.buttons]
         return dataSource
+    }
+    
+    var txtFieldValue: String {
+        switch self {
+        case .name(_): return VendorFormModel.shared.name
+        case .consignee(_): return VendorFormModel.shared.consignee
+        case .consigneeContactDetail(_): return VendorFormModel.shared.phoneNo
+        case .location: return ""
+        case .dimensions: return ""
+        case .parcelDetail(_): return VendorFormModel.shared.parcelDetail
+        case .weight(_): return VendorFormModel.shared.weight
+        case .instructions(_): return VendorFormModel.shared.instructions
+        case .refrigerationRequried: return ""
+        case .pickupTime(_): return VendorFormModel.shared.pickUpTime
+        case .pickupDate(_): return VendorFormModel.shared.pickUpDate
+        case .deliveryDate(_): return VendorFormModel.shared.deliveryDate
+        case .deliveryTime(_): return VendorFormModel.shared.deliveryTime
+        case .buttons: return ""
+        }
     }
 }
 
@@ -319,6 +343,31 @@ enum OrderScreenType {
         switch self {
         case .pending: return StringConstants.pendingTask.localized
         case .completed: return StringConstants.completedTask.localized
+        }
+    }
+}
+
+//MARK:- CompleteTask Detail Enum
+enum CompleteTaskDetailType {
+    case vendorName, consigneeName, contactDetail, pickupLocation
+    case dimensions, weight, handlingInstruction, deliveryLocation
+    case deliveryDateTime, distance, totalAmt, photoPickup, saveBtn
+    
+    var text: String {
+        switch self {
+        case .vendorName: return StringConstants.nameOfTheVendor.localized
+        case .consigneeName: return StringConstants.nameOfTheConsignee.localized
+        case .contactDetail: return StringConstants.contactDetailOfConsignee.localized
+        case .pickupLocation: return StringConstants.pickupLocation.localized
+        case .dimensions: return StringConstants.dimensions.localized
+        case .weight: return StringConstants.weight.localized
+        case .handlingInstruction: return StringConstants.handlingInstructions.localized
+        case .deliveryLocation: return StringConstants.deliveryLocation.localized
+        case .deliveryDateTime: return StringConstants.requiredTimeAndDateOfDelivery.localized
+        case .distance: return StringConstants.distance.localized
+        case .totalAmt: return StringConstants.totalAmt.localized
+        case .photoPickup: return StringConstants.pickPhoto.localized
+        case .saveBtn: return StringConstants.save.localized
         }
     }
 }

@@ -23,29 +23,20 @@ class VendorFormVC: BaseVC {
         self.initialSetup()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        CommonFunctions.disableIQKeyboard()
+    }
+    
     deinit {
         print_debug("VendorForm Deinit")
     }
     
     //MARK:- Private Methods
     private func initialSetup() {
-        self.setupFonts()
-        self.setupColors()
-        self.localizedView()
         self.setupTblView()
         self.setupNavigation()
-    }
-    
-    private func setupFonts() {
-        
-    }
-    
-    private func setupColors() {
-        
-    }
-    
-    private func localizedView() {
-        
+        CommonFunctions.enableIQKeybaord()
     }
     
     private func setupTblView() {
@@ -70,19 +61,26 @@ class VendorFormVC: BaseVC {
         self.removeNavigationBarBottomLine()
     }
     
-    private func openDatePicker(time: Bool) {
+    private func openDatePicker(type: VendorFormType) {
         let datePickerVC = DatePickerVC.instantiate(fromAppStoryboard: .picker)
-        datePickerVC.onlyTime = time
+        switch type {
+        case .pickupTime(_), .deliveryTime(_): datePickerVC.onlyTime = true
+        default: datePickerVC.onlyTime = false
+        }
         datePickerVC.onTapDone = { [weak self] (date) in
             guard let _ = self else { return }
-            let dateFormatter = DateFormatter()
-            if time {
-                dateFormatter.dateFormat = Date.DateFormat.hhmma.rawValue
-                print_debug(date.convertToString(dateformat: Date.DateFormat.hhmma.rawValue))
-            } else {
-                dateFormatter.dateFormat = Date.DateFormat.ddMMMyyyy.rawValue
-                print_debug(date)
+            switch type {
+            case .pickupTime:
+                VendorFormModel.shared.pickUpTime = date.convertToString(dateformat: Date.DateFormat.hhmma.rawValue)
+            case .deliveryTime:
+                VendorFormModel.shared.deliveryTime = date.convertToString(dateformat: Date.DateFormat.hhmma.rawValue)
+            case .pickupDate:
+                VendorFormModel.shared.pickUpDate = date.convertToString(dateformat: Date.DateFormat.ddMMMyyyy.rawValue)
+            case .deliveryDate:
+                VendorFormModel.shared.deliveryDate = date.convertToString(dateformat: Date.DateFormat.ddMMMyyyy.rawValue)
+            default: return
             }
+            self?.vendorFormTblView.reloadData()
         }
         datePickerVC.onTapCancel = { [weak self] in
             guard let _ = self else { return }
@@ -90,6 +88,30 @@ class VendorFormVC: BaseVC {
         }
         datePickerVC.modalPresentationStyle = .overCurrentContext
         self.present(datePickerVC, animated: false, completion: nil)
+    }
+    
+    private func updateTextOnTextField(with type: TextFieldType, value: String?) {
+        switch type {
+        case .name: VendorFormModel.shared.name = value ?? ""
+        case .consignee: VendorFormModel.shared.consignee = value ?? ""
+        case .consigneeContactDetail: VendorFormModel.shared.phoneNo = value ?? ""
+        case .parcelDetail: VendorFormModel.shared.parcelDetail = value ?? ""
+        case .weight: VendorFormModel.shared.weight = value ?? ""
+        case .instructions: VendorFormModel.shared.instructions = value ?? ""
+        case .pickupTime: VendorFormModel.shared.pickUpTime = value ?? ""
+        case .pickupDate: VendorFormModel.shared.pickUpDate = value ?? ""
+        case .deliveryTime: VendorFormModel.shared.deliveryTime = value ?? ""
+        case .deliveryDate: VendorFormModel.shared.deliveryDate = value ?? ""
+        default: return
+        }
+    }
+    
+    private func updateDimensionData(with value: String, type: DimensionType) {
+        switch type {
+        case .length: VendorFormModel.shared.dimensions.length  = value
+        case .breadth: VendorFormModel.shared.dimensions.breadth  = value
+        case .height: VendorFormModel.shared.dimensions.height  = value
+        }
     }
     
     //MARK:- Public Methods
@@ -113,17 +135,29 @@ extension VendorFormVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch self.vendorDataSource[indexPath.row] {
         case .location:
-            let cell = tableView.dequeueCell(with: AddressCell.self, indexPath: indexPath)
-            cell.configureCellForVendor(with: StringConstants.location.localized)
-            return cell
+            return self.getLocationCell(with: tableView, for: indexPath)
         case .dimensions:
-            let cell = tableView.dequeueCell(with: DimensionsCell.self, indexPath: indexPath)
-            cell.configureCell()
-            return cell
+            return self.getDimensionsCell(with: tableView, for: indexPath)
         case .refrigerationRequried:
-            let cell = tableView.dequeueCell(with: RefrigerationRequiredCell.self, indexPath: indexPath)
-            cell.configureCell()
-            return cell
+            return self.getRefrigerationRequiredCell(with: tableView, for: indexPath)
+        case .buttons:
+            return self.getButtonCell(with: tableView, for: indexPath)
+        default:
+            return self.getCommonTxtFieldCell(with: tableView, for: indexPath)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return self.tableView(tableView, heightForRowAt: indexPath)
+    }
+    
+    //MARK:- Return Table Cells
+    private func getCommonTxtFieldCell(with tableView: UITableView, for indexPath: IndexPath) -> CommonTFCell {
+        switch self.vendorDataSource[indexPath.row] {
         case .name(let tfType),
              .consignee(let tfType),
              .consigneeContactDetail(let tfType),
@@ -135,28 +169,58 @@ extension VendorFormVC: UITableViewDelegate, UITableViewDataSource {
              .pickupDate(let tfType),
              .pickupTime(let tfType):
             let cell = tableView.dequeueCell(with: CommonTFCell.self, indexPath: indexPath)
-            cell.configureCellForVendor(with: tfType)
+            cell.configureCellForVendor(with: tfType, value: self.vendorDataSource[indexPath.row].txtFieldValue)
+            cell.handler = { [weak self] (txtFieldType, value) in
+                guard let self = self else { return }
+                self.updateTextOnTextField(with: txtFieldType, value: value)
+            }
             cell.onTapBtn = { [weak self] in
                 guard let self = self else { return }
-                switch self.vendorDataSource[indexPath.row] {
-                case .pickupTime, .deliveryTime: self.openDatePicker(time: true)
-                case .pickupDate, .deliveryDate: self.openDatePicker(time: false)
-                default: return
-                }
+                self.openDatePicker(type: self.vendorDataSource[indexPath.row])
             }
             return cell
-        case .buttons:
-            let cell = tableView.dequeueCell(with: SubmitButtonCell.self, indexPath: indexPath)
-            cell.configureCellForVendor(isEditHidden: self.isDataAvailable)
-            return cell
+        default:
+            return CommonTFCell()
         }
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+    private func getLocationCell(with tableView: UITableView, for indexPath: IndexPath) -> AddressCell {
+        let cell = tableView.dequeueCell(with: AddressCell.self, indexPath: indexPath)
+        cell.configureCellForVendor(with: StringConstants.location.localized, firstAddress: VendorFormModel.shared.pickupAddress, secondAddress: VendorFormModel.shared.deliveryAddress)
+        cell.firstAddressHandler = { [weak self] (value) in
+            guard let _ = self else { return }
+            VendorFormModel.shared.pickupAddress = value
+        }
+        cell.secondAddressHanlder = { [weak self] (value) in
+            guard let _ = self else { return }
+            VendorFormModel.shared.deliveryAddress = value
+        }
+        return cell
     }
     
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return self.tableView(tableView, heightForRowAt: indexPath)
+    private func getDimensionsCell(with tableView: UITableView, for indexPath: IndexPath) -> DimensionsCell {
+        let cell = tableView.dequeueCell(with: DimensionsCell.self, indexPath: indexPath)
+        cell.configureCell(length: VendorFormModel.shared.dimensions.length, breadth: VendorFormModel.shared.dimensions.breadth, height: VendorFormModel.shared.dimensions.height)
+        cell.txtHandler = { [weak self] (value, type) in
+            guard let self = self else { return }
+            self.updateDimensionData(with: value, type: type)
+        }
+        return cell
+    }
+
+    private func getRefrigerationRequiredCell(with tableView: UITableView, for indexPath: IndexPath) -> RefrigerationRequiredCell {
+        let cell = tableView.dequeueCell(with: RefrigerationRequiredCell.self, indexPath: indexPath)
+        cell.configureCell(isRefrigerationRequired: VendorFormModel.shared.refrigerationRequired)
+        cell.handler = { [weak self] (value) in
+            guard let _ = self else { return }
+            VendorFormModel.shared.refrigerationRequired = value
+        }
+        return cell
+    }
+
+    private func getButtonCell(with tableView: UITableView, for indexPath: IndexPath) -> SubmitButtonCell {
+        let cell = tableView.dequeueCell(with: SubmitButtonCell.self, indexPath: indexPath)
+        cell.configureCellForVendor(isEditHidden: self.isDataAvailable)
+        return cell
     }
 }

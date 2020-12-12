@@ -10,6 +10,10 @@ import UIKit
 
 class AddressCell: UITableViewCell {
 
+    //MARK:- Properties
+    public var firstAddressHandler: ((String)->Void)?
+    public var secondAddressHanlder: ((String)->Void)?
+    
     //MARK:- IBOutlets
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var firstAddressView: UIView!
@@ -37,6 +41,7 @@ class AddressCell: UITableViewCell {
     private func setupCell() {
         self.setupFonts()
         self.setupColors()
+        self.setupTextView()
     }
     
     private func setupFonts() {
@@ -57,16 +62,43 @@ class AddressCell: UITableViewCell {
         self.lblTitle.textColor = AppColors.txtLableColor
     }
     
+    private func setupTextView() {
+        self.firstAddressTextView.delegate = self
+        self.secondAddressTextView.delegate = self
+    }
+    
     //MARK:- Public Methods
-    public func configureCellForVendor(with text: String) {
+    public func configureCellForVendor(with text: String, firstAddress: String, secondAddress: String) {
         self.lblTitle.text = text + " *"
         self.firstAddressTextView.placeholder = StringConstants.enterPickupAddress.localized
         self.secondAddressTextView.placeholder = StringConstants.enterDeliveryAddress.localized
+        self.firstAddressTextView.text = firstAddress
+        self.secondAddressTextView.text = secondAddress
     }
     
     public func configureCellForUserCreation(with text: String) {
         self.lblTitle.text = text + " *"
         self.firstAddressTextView.placeholder = StringConstants.addressPlaceHolder.localized
         self.secondAddressView.isHidden = true
+    }
+}
+
+//MARK:- UITextViewDelegate
+extension AddressCell: UITextViewDelegate {
+    
+    func textViewDidChange(_ textView: UITextView) {
+        if textView == self.firstAddressTextView {
+            print_debug(textView.text ?? "")
+            guard let safeHandler = self.firstAddressHandler else { return }
+            safeHandler(textView.text ?? "")
+        } else if textView == self.secondAddressTextView {
+            print_debug(textView.text ?? "")
+            guard let safeHandler = self.secondAddressHanlder else { return }
+            safeHandler(textView.text ?? "")
+        }
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        return true
     }
 }

@@ -10,6 +10,8 @@ import UIKit
 
 class RefrigerationRequiredCell: UITableViewCell {
 
+    //MARK:- Properties
+    public var handler: ((Bool)->Void)?
     //MARK:- IBOutlets
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var yesView: UIView!
@@ -67,18 +69,23 @@ class RefrigerationRequiredCell: UITableViewCell {
     }
     
     //MARK:- Public Methods
-    public func configureCell() {
+    public func configureCell(isRefrigerationRequired: Bool) {
         self.lblTitle.text = StringConstants.refrigerationRequired.localized
         self.lblYes.text = StringConstants.yes.localized
         self.lblNo.text = StringConstants.no.localized
+        self.updateCircleView(value: isRefrigerationRequired)
     }
     
     //MARK:- IBActions
     @IBAction func yesBtnTapped(_ sender: UIButton) {
         self.updateCircleView(value: true)
+        guard let safeHandler = self.handler else { return }
+        safeHandler(true)
     }
     
     @IBAction func noBtnTapped(_ sender: UIButton) {
         self.updateCircleView(value: false)
+        guard let safeHandler = self.handler else { return }
+        safeHandler(false)
     }
 }

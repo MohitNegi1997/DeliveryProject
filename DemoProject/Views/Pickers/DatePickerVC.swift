@@ -85,6 +85,7 @@ class DatePickerVC: BaseVC {
         } else {
             customDatePicker?.minimumDate = currentDate
         }
+        self.customDatePicker?.reloadInputViews()
     }
     
     private func donebtnActionForDatePicker() {

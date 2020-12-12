@@ -133,6 +133,35 @@ enum StringConstants: String {
     case pendingTask = "Pending Task"
     case completedTask = "Completed Task"
     
+    //MARK:- CompleteTaskDetailEnum
+    case nameOfTheVendor = "Name of the Vendor:"
+    case nameOfTheConsignee = "Name of the Consigee:"
+    case contactDetailOfConsignee = "Contact Detail of Consignee:"
+    case pickupLocation = "Pickup Location:"
+    case handlingInstructions = "Handling Instruction:"
+    case deliveryLocation = "Delivery Location:"
+    case requiredTimeAndDateOfDelivery = "Required Time & Date of Delivery:"
+    case distance = "Distance:"
+    case totalAmt = "Total Amount:"
+    case pickPhoto = "Pick Photo:"
+    case save = "Save"
+    
+    //MARK:- CompleteTaskDetailVC
+    case completeTaskDetail = "Complete Task Detail"
+    
+    //MARK:- AttachementHandler
+    case addAFile = "Add a File"
+    case chooseAFileType = "Choose a filetype to add..."
+    case camera = "Camera"
+    case phoneLibrary = "Phone Library"
+    case video = "Video"
+    case file = "File"
+    
+    case alertForPhotoLibraryMessage = "App does not have access to your photos. To enable access, tap settings and turn on Photo Library Access."
+    case alertForCameraAccessMessage = "App does not have access to your camera. To enable access, tap settings and turn on Camera."
+    case alertForVideoLibraryMessage = "App does not have access to your video. To enable access, tap settings and turn on Video Library Access."
+    case settings = "Settings"
+    
     //MARK:- Session Expired
     case session_Expired = "Session Expired"
 }

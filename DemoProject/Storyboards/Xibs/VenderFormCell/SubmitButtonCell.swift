@@ -9,6 +9,10 @@
 import UIKit
 
 class SubmitButtonCell: UITableViewCell {
+    
+    //MARK:- Properties
+    public var onTapSubmit: (()->Void)?
+    public var onTapEdit: (()->Void)?
 
     //MARK:- IBOutlets
     @IBOutlet weak var submitBtn: UIButton!
@@ -62,12 +66,17 @@ class SubmitButtonCell: UITableViewCell {
         self.editBtn.isHidden = true
     }
     
+    public func configureCellForCompleteTask() {
+        self.submitBtn.setTitle(StringConstants.save.localized.uppercased(), for: .normal)
+        self.editBtn.isHidden = true
+    }
+    
     //MARK:- IBActions
     @IBAction func submitBtnTapped(_ sender: UIButton) {
-        
+        self.onTapSubmit?()
     }
     
     @IBAction func editBtnTapped(_ sender: UIButton) {
-        
+        self.onTapEdit?()
     }
 }

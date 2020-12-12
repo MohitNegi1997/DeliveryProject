@@ -97,6 +97,12 @@
 		0CDF8B7E25741C2500604DA3 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDF8B7D25741C2500604DA3 /* Validation.swift */; };
 		0CFF52112577521C00FDFA1C /* CommonTFCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFF520F2577521C00FDFA1C /* CommonTFCell.swift */; };
 		0CFF52122577521C00FDFA1C /* CommonTFCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CFF52102577521C00FDFA1C /* CommonTFCell.xib */; };
+		84358E3F2584936500EB7ACD /* CameraCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84358E3D2584936500EB7ACD /* CameraCell.swift */; };
+		84358E402584936500EB7ACD /* CameraCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84358E3E2584936500EB7ACD /* CameraCell.xib */; };
+		84358E4225849C8500EB7ACD /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84358E4125849C8500EB7ACD /* ImagePicker.swift */; };
+		84D401292582725800D029DD /* CompleteTaskDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D401282582725800D029DD /* CompleteTaskDetailVC.swift */; };
+		84D4012E25828FDC00D029DD /* CompleteTaskDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4012C25828FDC00D029DD /* CompleteTaskDetailCell.swift */; };
+		84D4012F25828FDC00D029DD /* CompleteTaskDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D4012D25828FDC00D029DD /* CompleteTaskDetailCell.xib */; };
 		DA62EADC9241B96BFE366DA3 /* Pods_DemoProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CDC663AF58F25520F1C5932 /* Pods_DemoProject.framework */; };
 /* End PBXBuildFile section */
 
@@ -195,6 +201,12 @@
 		0CFF52102577521C00FDFA1C /* CommonTFCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommonTFCell.xib; sourceTree = "<group>"; };
 		17E75C016938D22C8F94C700 /* Pods-DemoProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoProject.release.xcconfig"; path = "Target Support Files/Pods-DemoProject/Pods-DemoProject.release.xcconfig"; sourceTree = "<group>"; };
 		4CDC663AF58F25520F1C5932 /* Pods_DemoProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DemoProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		84358E3D2584936500EB7ACD /* CameraCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCell.swift; sourceTree = "<group>"; };
+		84358E3E2584936500EB7ACD /* CameraCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CameraCell.xib; sourceTree = "<group>"; };
+		84358E4125849C8500EB7ACD /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImagePicker.swift; path = DemoProject/Storyboards/Xibs/CompleteTaskCell/ImagePicker.swift; sourceTree = SOURCE_ROOT; };
+		84D401282582725800D029DD /* CompleteTaskDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteTaskDetailVC.swift; sourceTree = "<group>"; };
+		84D4012C25828FDC00D029DD /* CompleteTaskDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteTaskDetailCell.swift; sourceTree = "<group>"; };
+		84D4012D25828FDC00D029DD /* CompleteTaskDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompleteTaskDetailCell.xib; sourceTree = "<group>"; };
 		C41FFCCA575F768C545A7CF4 /* Pods-DemoProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoProject.debug.xcconfig"; path = "Target Support Files/Pods-DemoProject/Pods-DemoProject.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -222,6 +234,7 @@
 		0C2B70B62577836700AC309F /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				84358E4125849C8500EB7ACD /* ImagePicker.swift */,
 			);
 			path = ThirdParty;
 			sourceTree = "<group>";
@@ -277,6 +290,7 @@
 				0C71BD38257AAD9E00551731 /* AdminHomeVC.swift */,
 				0C6A30E5257AC4F7006B1D51 /* SettingVC.swift */,
 				0C73A23B257B5328007BCBE0 /* UserCreationVC.swift */,
+				84D401282582725800D029DD /* CompleteTaskDetailVC.swift */,
 			);
 			path = AdminModule;
 			sourceTree = "<group>";
@@ -430,6 +444,7 @@
 		0CDF8B222573D51600604DA3 /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
+				84D4012B25828FBA00D029DD /* CompleteTaskCell */,
 				0CCA2F0F257CBD1D00B010AD /* AdminHomeCell */,
 				0C10FB20257810DC001FDDD4 /* VendorHomeCell */,
 				0CFF520E2577516E00FDFA1C /* VenderFormCell */,
@@ -543,6 +558,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		84D4012B25828FBA00D029DD /* CompleteTaskCell */ = {
+			isa = PBXGroup;
+			children = (
+				84D4012C25828FDC00D029DD /* CompleteTaskDetailCell.swift */,
+				84D4012D25828FDC00D029DD /* CompleteTaskDetailCell.xib */,
+				84358E3D2584936500EB7ACD /* CameraCell.swift */,
+				84358E3E2584936500EB7ACD /* CameraCell.xib */,
+			);
+			path = CompleteTaskCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -613,6 +639,7 @@
 				0CDF8B102573C7B200604DA3 /* LaunchScreen.storyboard in Resources */,
 				0C3F099325767BA70091E120 /* Vendor.storyboard in Resources */,
 				0CDF8B442573E31600604DA3 /* SF-Pro-Text-LightItalic.otf in Resources */,
+				84D4012F25828FDC00D029DD /* CompleteTaskDetailCell.xib in Resources */,
 				0CDF8B472573E31600604DA3 /* SF-Pro-Text-HeavyItalic.otf in Resources */,
 				0CDF8B4B2573E31600604DA3 /* SF-Pro-Text-Semibold.otf in Resources */,
 				0C10FB1F257806B0001FDDD4 /* SubmitButtonCell.xib in Resources */,
@@ -627,6 +654,7 @@
 				0C90729D257D32CF001FC6EB /* DeliveryBoy.storyboard in Resources */,
 				0C10FB1B2577ED26001FDDD4 /* RefrigerationRequiredCell.xib in Resources */,
 				0CDF8B492573E31600604DA3 /* SF-Pro-Text-Medium.otf in Resources */,
+				84358E402584936500EB7ACD /* CameraCell.xib in Resources */,
 				0CDF8B452573E31600604DA3 /* SFProText-Italic.otf in Resources */,
 				0CDF8B432573E31600604DA3 /* SF-Pro-Text-SemiboldItalic.otf in Resources */,
 				0C2B70C325779C2100AC309F /* AddressCell.xib in Resources */,
@@ -689,7 +717,9 @@
 				0CFF52112577521C00FDFA1C /* CommonTFCell.swift in Sources */,
 				0C2B70C225779C2100AC309F /* AddressCell.swift in Sources */,
 				0C9072A2257D4DC9001FC6EB /* DeliveryStatusVC.swift in Sources */,
+				84358E4225849C8500EB7ACD /* ImagePicker.swift in Sources */,
 				0CDF8B5C2573EC5D00604DA3 /* ArrayExtension.swift in Sources */,
+				84358E3F2584936500EB7ACD /* CameraCell.swift in Sources */,
 				0CDF8B6C2573F57200604DA3 /* WebServices+EndPoints.swift in Sources */,
 				0CCA2F19257CCC2B00B010AD /* UILabelExtension.swift in Sources */,
 				0C10FB23257810FC001FDDD4 /* OrderStatusCell.swift in Sources */,
@@ -699,6 +729,7 @@
 				0CDF8B082573C7B100604DA3 /* LoginVC.swift in Sources */,
 				0C490CE02576C3840015070F /* VendorFormVC.swift in Sources */,
 				0CDF8B762573FC8700604DA3 /* AppUserDefaults.swift in Sources */,
+				84D401292582725800D029DD /* CompleteTaskDetailVC.swift in Sources */,
 				0CDF8B512573E7FE00604DA3 /* AppGlobals.swift in Sources */,
 				0CDF8B5E2573ECE800604DA3 /* UITableViewExtension.swift in Sources */,
 				0CDF8B7C2574148700604DA3 /* UITextFieldExtension.swift in Sources */,
@@ -721,6 +752,7 @@
 				0CDF8B042573C7B100604DA3 /* AppDelegate.swift in Sources */,
 				0CDF8B602573ED1B00604DA3 /* UICollectionViewExtension.swift in Sources */,
 				0CDF8B532573E89A00604DA3 /* Debouncer.swift in Sources */,
+				84D4012E25828FDC00D029DD /* CompleteTaskDetailCell.swift in Sources */,
 				0C3F09912576764A0091E120 /* AppEnum.swift in Sources */,
 				0C490CCE2576A6710015070F /* MenuC.swift in Sources */,
 				0C2B70BC2577844000AC309F /* DatePickerVC.swift in Sources */,
@@ -889,7 +921,8 @@
 			baseConfigurationReference = C41FFCCA575F768C545A7CF4 /* Pods-DemoProject.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4K64P2PDAU;
 				INFOPLIST_FILE = "$(SRCROOT)/DemoProject/Resource/Info.plist";
@@ -901,6 +934,7 @@
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.toki.mn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = TokiLive_Dev;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -911,7 +945,8 @@
 			baseConfigurationReference = 17E75C016938D22C8F94C700 /* Pods-DemoProject.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4K64P2PDAU;
 				INFOPLIST_FILE = "$(SRCROOT)/DemoProject/Resource/Info.plist";
@@ -923,6 +958,7 @@
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.toki.mn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = TokiLive_Dev;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

@@ -11,7 +11,9 @@ import UIKit
 class CommonTFCell: UITableViewCell {
     
     //MARK:- Properties
-    var onTapBtn: (()->Void)?
+    private var txtFieldType: TextFieldType? = nil
+    public var onTapBtn: (()->Void)?
+    public var handler: ((TextFieldType, String?)->Void)?
 
     //MARK:- IBOutlets
     @IBOutlet weak var lblTitle: UILabel!
@@ -52,8 +54,11 @@ class CommonTFCell: UITableViewCell {
     }
     
     //MARK:- Public Methods
-    public func configureCellForVendor(with textFieldType: TextFieldType) {
+    public func configureCellForVendor(with textFieldType: TextFieldType, value: String) {
+        self.commonTxtField.delegate = self
+        self.txtFieldType = textFieldType
         self.commonTxtField.setPlaceholder(with: textFieldType.placeHolder, color: AppColors.whiteColor)
+        self.commonTxtField.text = value
         switch  textFieldType {
         case .pickupDate,.pickupTime,.deliveryTime,.deliveryDate:
             self.commonBtn.isHidden = false
@@ -68,6 +73,8 @@ class CommonTFCell: UITableViewCell {
     }
     
     public func configureCellForUserCreation(with textFieldType: TextFieldType) {
+        self.txtFieldType = textFieldType
+        self.commonTxtField.delegate = self
         self.commonTxtField.setPlaceholder(with: textFieldType.placeHolder, color: AppColors.whiteColor)
         self.lblTitle.text = textFieldType.text + " *"
         self.commonBtn.isHidden = textFieldType != .role
@@ -76,5 +83,58 @@ class CommonTFCell: UITableViewCell {
     //MARK:- IBActions
     @IBAction func commonBtnTapped(_ sender: UIButton) {
         self.onTapBtn?()
+    }
+}
+
+//MARK:- UITextFieldDelegate
+extension CommonTFCell: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        print_debug(textField.text)
+        guard let handler = self.handler else { return }
+        guard let safeTxtField = self.txtFieldType else { return }
+        handler(safeTxtField, textField.text ?? "")
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        switch self.txtFieldType {
+        case .consigneeContactDetail:
+            self.commonTxtField.keyboardType = .numberPad
+            self.commonTxtField.text = (textField.text!.count >= 4) ? (textField.text ?? "") : "+91-"
+        case .weight:
+            self.commonTxtField.keyboardType = .decimalPad
+        default:
+            self.commonTxtField.keyboardType = .asciiCapable
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        switch self.txtFieldType {
+        case .consigneeContactDetail:
+            if (self.commonTxtField.text?.count ?? 0) <= 4 {
+                self.commonTxtField.text = ""
+                self.commonTxtField.setPlaceholder(with: self.txtFieldType?.placeHolder ?? TextFieldType.consigneeContactDetail.placeHolder, color: AppColors.whiteColor)
+            }
+        default: return
+        }
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let userEnteredString = textField.text else { return false }
+        let newString = (userEnteredString as NSString).replacingCharacters(in: range, with: string) as NSString
+        switch self.txtFieldType {
+        case .consigneeContactDetail:
+            if range.length == 1 {
+                return newString.length >= 4
+            } else {
+                return newString.length <= AppConstants.phoneNoLength
+            }
+        default: return true
+        }
     }
 }

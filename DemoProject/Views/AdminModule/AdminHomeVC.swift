@@ -138,6 +138,11 @@ extension AdminHomeVC: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
      
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let completeTaskVC = CompleteTaskDetailVC.instantiate(fromAppStoryboard: .admin)
+        self.push(completeTaskVC, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }

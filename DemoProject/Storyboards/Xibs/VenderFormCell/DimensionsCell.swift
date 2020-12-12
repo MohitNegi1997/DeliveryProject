@@ -10,6 +10,8 @@ import UIKit
 
 class DimensionsCell: UITableViewCell {
     
+    //MARK:- Properties
+    public var txtHandler: ((String, DimensionType)->Void)?
     
     //MARK:- IBOutlets
     @IBOutlet weak var lblTitle: UILabel!
@@ -41,6 +43,7 @@ class DimensionsCell: UITableViewCell {
     private func setupCell() {
         self.setupFonts()
         self.setupColors()
+        self.setupTextField()
     }
     
     private func setupFonts() {
@@ -60,11 +63,42 @@ class DimensionsCell: UITableViewCell {
         self.lblTitle.textColor = AppColors.txtLableColor
     }
     
+    private func setupTextField() {
+        self.lengthTxtField.delegate = self
+        self.breadthTxtField.delegate = self
+        self.heightTxtField.delegate = self
+        self.lengthTxtField.keyboardType = .decimalPad
+        self.breadthTxtField.keyboardType = .decimalPad
+        self.heightTxtField.keyboardType = .decimalPad
+    }
+    
     //MARK:- Public Methods
-    public func configureCell() {
+    public func configureCell(length: String, breadth: String, height: String) {
         self.lblTitle.text = StringConstants.dimensions.localized + " *" + "(\(StringConstants.cm.localized))"
         self.lengthTxtField.setPlaceholder(with: StringConstants.length.localized, color: AppColors.whiteColor)
         self.breadthTxtField.setPlaceholder(with: StringConstants.breadth.localized, color: AppColors.whiteColor)
         self.heightTxtField.setPlaceholder(with: StringConstants.height.localized, color: AppColors.whiteColor)
+        self.lengthTxtField.text = length
+        self.breadthTxtField.text = breadth
+        self.heightTxtField.text = height
+    }
+}
+
+//MARK:- UITextFieldDelegate
+extension DimensionsCell: UITextFieldDelegate {
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        guard let safeHandler = self.txtHandler else { return }
+        if textField == self.lengthTxtField {
+            safeHandler(textField.text ?? "", .length)
+        } else if textField == self.breadthTxtField {
+            safeHandler(textField.text ?? "", .breadth)
+        } else if textField == self.heightTxtField {
+            safeHandler(textField.text ?? "", .height)
+        }
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return true
     }
 }

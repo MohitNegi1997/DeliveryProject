@@ -18,5 +18,5 @@ enum ValidityExression : String {
 
 enum AppConstants {
     
-    static var phoneNoLength: Int { return 10 }
+    static var phoneNoLength: Int { return 14 }
 }
